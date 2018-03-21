@@ -15,12 +15,12 @@ export class HomePage {
 
     // This is where the nav bar E2E tests funcitons are created.
 
-    static GoToNavMenu(){
+    /*static GoToNavMenu(){
         const input = element (by.id('navBar'));
         input.click();
-    }
+    }*/
 
-    static GoToReports(){
+    /*static GoToReports(){
         const input = element (by.id('rep'));
         input.click();
     }
@@ -31,7 +31,7 @@ export class HomePage {
     static GoToResources(){
         const input = element (by.id('rsrc'));
         input.click();
-    }
+    }*/
 
     // This is where the homepage E2E test funcitons are created
 
