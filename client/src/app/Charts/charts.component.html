@@ -1,10 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
+
 <head>
+    <script src="plotly-latest.min.js"></script>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+<div id="tester" style="width:600px;height:250px;"></div>
 
 </body>
-</html>
+
+<script>
+    TESTER = document.getElementById('tester');
+    var days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
+    var happy_daily_totals = [5, 4, 3, 6, 1, 2, 3];
+    var sad_daily_totals = [6, 7, 3, 1, 5, 4, 3];
+
+    var happy_data = {
+        x: days,
+        y: happy_daily_totals,
+        type: 'scatter',
+        name: 'Happy'
+    };
+
+    var sad_data = {
+        x: days,
+        y: sad_daily_totals,
+        type: 'scatter',
+        name: 'Sad'
+    };
+
+    var layout = {
+        title: 'This Week\'s Emotions'
+    };
+
+    var full_data = [happy_data, sad_data];
+
+    Plotly.plot( TESTER, full_data, layout);
+</script>
