@@ -9,6 +9,8 @@ import {ReportsService} from "./reports.service";
     styleUrls: ['./reports.component.css'],
 })
 
+
+
 export class ReportsComponent implements OnInit {
     // These are public so that tests can reference them (.spec.ts)
     public emojis: Emoji[];
@@ -23,6 +25,7 @@ export class ReportsComponent implements OnInit {
     constructor(public reportsService: ReportsService) {
 
     }
+
 
 
     public filterEmojis(searchOwner): Emoji[] {
@@ -48,6 +51,8 @@ export class ReportsComponent implements OnInit {
 
         return this.filteredEmojis;
     }
+
+
 
     /**
      * Starts an asynchronous operation to update the emojis list

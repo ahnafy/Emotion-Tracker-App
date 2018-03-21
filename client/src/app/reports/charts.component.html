@@ -1,32 +1,44 @@
+
 <div layout-gt-sm="row">
     <div flex-gt-sm="80" flex-offset-gt-sm="10">
         <mat-card>
             <mat-card-title id="reports-title">Reports</mat-card-title>
             <mat-divider></mat-divider>
             <mat-card-content>
-                <mat-form-field>
-                    <input matInput id="emojiOwner" #input type="text" placeholder="Filter by owner" (input)="emojiOwner = $event.target.value">
-                </mat-form-field>
 
-                <mat-accordion *ngIf="emojis; else emojiError" >
-                    <mat-expansion-panel #elem class="emoji" [id]="emoji._id['$oid']"  *ngFor="let emoji of this.filterEmojis(emojiOwner)">
-                        <mat-expansion-panel-header>
-                            <!-- This gets an emoji image based on the mood that the user input when creating the emoji object -->
-                            <mat-panel-title id="test" matTooltip="ID: {{emoji._id['$oid']}}" >{{emoji.owner}} &nbsp; <img src="assets/reportEmojis/{{emoji.mood}}.png"></mat-panel-title>
-                        </mat-expansion-panel-header>
-                        <mat-panel-description >Date: {{emoji.date}}</mat-panel-description>
-                    </mat-expansion-panel>
-                </mat-accordion>
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">
+                        google.charts.load('current', {packages: ['corechart', 'line']});
+                        google.charts.setOnLoadCallback(drawBasic);
 
-                <ng-template #emojiError>
-                    <mat-error>
-                        There was a problem loading the data. Possibly the server is down or perhaps there are network
-                        issues.
-                    </mat-error>
-                    <mat-error>
-                        Please wait a bit and try again or start the server.
-                    </mat-error>
-                </ng-template>
+                        function drawBasic() {
+
+                            var data = new google.visualization.DataTable();
+                            data.addColumn('number', 'This day');
+                            data.addColumn('number', 'Emotions');
+
+                            data.addRows([
+                                [1, 4],   [2, 5],  [3, 3],  [4, 4],  [5, 1],  [6, 2],
+                                [7, 3]
+                            ]);
+
+                            var options = {
+                                hAxis: {
+                                    title: 'Day'
+                                },
+                                vAxis: {
+                                    title: 'Feeling'
+                                }
+
+                            };
+
+                            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+                            chart.draw(data, options);
+                        }
+                    </script>
+                    <div id="chart_div"></div>
+
+
             </mat-card-content>
         </mat-card>
     </div>
