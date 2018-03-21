@@ -7,6 +7,7 @@ import {ResourcesComponent} from "./resources/resources.component";
 import {ReportsComponent} from "./reports/reports.component";
 import {JournalingComponent} from "./journaling/journaling.component";
 import {GoalsComponent} from "./goals/goals.component";
+import {ChartsComponent} from "./charts/charts.component";
 
 // Route Configuration
 export const routes: Routes = [
@@ -15,7 +16,7 @@ export const routes: Routes = [
     {path: 'resources', component: ResourcesComponent },
     {path: 'reports', component: ReportsComponent },
     {path: 'goals', component: GoalsComponent },
-
+    {path: 'charts', component: ChartsComponent },
 ];
 
 export const Routing: ModuleWithProviders = RouterModule.forRoot(routes);

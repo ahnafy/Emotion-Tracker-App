@@ -22,6 +22,7 @@ import {JournalingComponent} from "./journaling/journaling.component";
 import {GoalsComponent} from "./goals/goals.component";
 import {GoalsService} from "./goals/goals.service";
 import {AddGoalComponent} from "./goals/add-goals.component";
+import {ChartsComponent} from "./charts/charts.component";
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import {AddGoalComponent} from "./goals/add-goals.component";
         ReportsComponent,
         JournalingComponent,
         GoalsComponent,
-        AddGoalComponent
+        AddGoalComponent,
+        ChartsComponent
     ],
     providers: [
         UserListService,
