@@ -1,1 +1,13 @@
+mat-nav-list {
+    word-spacing: 50px;
+    display: block;
+    text-align: center;
+}
 
+.move { display: inline-block; }
+
+body{
+    font-size:150%;
+    background-color: orange;
+    font-family: inherit;
+}
