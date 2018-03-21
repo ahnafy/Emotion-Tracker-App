@@ -45,9 +45,34 @@ export class ChartsComponent implements OnInit {
             return date2.valueOf() - date1.valueOf();
         });
 
+        return this.filteredEmojis;
+    }
+
+    public filterDayOfWeek(weekday): Emoji[] {
+
+        this.filteredEmojis = this.emojis;
+
+        // Filter by day of the week
+            this.filteredEmojis = this.filteredEmojis.filter(emoji => {
+                return !weekday || emoji.date.indexOf(weekday) !== -1;
+            });
 
         return this.filteredEmojis;
     }
+
+    public filterMood(mood): Emoji[] {
+
+        this.filteredEmojis = this.emojis;
+
+        // Filter by value
+        this.filteredEmojis = this.filteredEmojis.filter(emoji => {
+            return !mood || emoji.mood !== -1;//??????
+        });
+
+
+        return this.filteredEmojis;
+    }
+
 
     /**
      * Starts an asynchronous operation to update the emojis list
