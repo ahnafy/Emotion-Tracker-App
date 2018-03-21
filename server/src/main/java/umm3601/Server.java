@@ -8,6 +8,8 @@ import umm3601.emoji.EmojiController;
 import umm3601.emoji.EmojiRequestHandler;
 import umm3601.goal.GoalRequestHandler;
 import umm3601.goal.GoalController;
+import umm3601.emergency.EmergencyRequestHandler;
+import umm3601.emergency.EmergencyController;
 
 import java.io.IOException;
 
@@ -28,6 +30,9 @@ public class Server {
         EmojiRequestHandler emojiRequestHandler = new EmojiRequestHandler(emojiController);
         GoalController goalController = new GoalController(emojiDatabase);
         GoalRequestHandler goalRequestHandler = new GoalRequestHandler(goalController);
+
+        EmergencyController emergencyController = new EmergencyController(emojiDatabase);
+        EmergencyRequestHandler emergencyRequestHandler = new EmergencyRequestHandler(emergencyController);
 
         //Configure Spark
         port(serverPort);
@@ -64,6 +69,8 @@ public class Server {
         redirect.get("/journaling", "/");
         redirect.get("/goals", "/");
 
+        redirect.get("/emergencys", "/");
+
         /// User Endpoints ///////////////////////////
         /////////////////////////////////////////////
 
@@ -73,8 +80,14 @@ public class Server {
         get("api/emojis/:id", emojiRequestHandler::getEmojiJSON);
        get("api/goals", goalRequestHandler::getGoals);
         get("api/goals/:id", goalRequestHandler::getGoalJSON);
+
+        get("api/emergencys", emergencyRequestHandler::getEmergency);
+        get("api/emergencys/:id", emergencyRequestHandler::getEmergencyJSON);
+
         post("api/emojis/new", emojiRequestHandler::addNewEmoji);
         post("api/goals/new", goalRequestHandler::addNewGoal);
+
+        post("api/emergencys/new", emergencyRequestHandler::addNewEmergency);
         // An example of throwing an unhandled exception so you can see how the
         // Java Spark debugger displays errors like this.
         get("api/error", (req, res) -> {

@@ -23,6 +23,10 @@ import {GoalsComponent} from "./goals/goals.component";
 import {GoalsService} from "./goals/goals.service";
 import {AddGoalComponent} from "./goals/add-goals.component";
 
+import {EmergencysComponent} from "./emergencys/emergencys.component";
+import {EmergencysService} from "./emergencys/emergencys.service";
+import {AddEmergencysComponent} from "./emergencys/add-emergencys.component";
+
 
 @NgModule({
     imports: [
@@ -41,20 +45,28 @@ import {AddGoalComponent} from "./goals/add-goals.component";
         ReportsComponent,
         JournalingComponent,
         GoalsComponent,
-        AddGoalComponent
+        AddGoalComponent,
+
+        EmergencysComponent,
+        AddEmergencysComponent,
     ],
     providers: [
         UserListService,
         HomeService,
         ReportsService,
         GoalsService,
+
+        EmergencysService,
+
         {provide: APP_BASE_HREF, useValue: '/'},
         {provide: MATERIAL_COMPATIBILITY_MODE, useValue: true}
     ],
     entryComponents: [
       AddUserComponent,
         ResponseComponent,
-        AddGoalComponent
+        AddGoalComponent,
+
+        AddEmergencysComponent,
         //add resource component would go here//
     ],
     bootstrap: [AppComponent]

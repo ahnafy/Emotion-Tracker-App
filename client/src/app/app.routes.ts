@@ -7,6 +7,7 @@ import {ResourcesComponent} from "./resources/resources.component";
 import {ReportsComponent} from "./reports/reports.component";
 import {JournalingComponent} from "./journaling/journaling.component";
 import {GoalsComponent} from "./goals/goals.component";
+import {EmergencysComponent} from "./emergencys/emergencys.component";
 
 // Route Configuration
 export const routes: Routes = [
@@ -15,6 +16,9 @@ export const routes: Routes = [
     {path: 'resources', component: ResourcesComponent },
     {path: 'reports', component: ReportsComponent },
     {path: 'goals', component: GoalsComponent },
+    {path: 'emergencys', component: EmergencysComponent },
+
+
 
 ];
 
