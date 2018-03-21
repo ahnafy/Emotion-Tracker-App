@@ -48,7 +48,7 @@ export class ChartsComponent implements OnInit {
         return this.filteredEmojis;
     }
 
-    public filterDayOfWeek(weekday): Emoji[] {
+    public numberByDay(weekday): number {
 
         this.filteredEmojis = this.emojis;
 
@@ -57,7 +57,7 @@ export class ChartsComponent implements OnInit {
                 return !weekday || emoji.date.indexOf(weekday) !== -1;
             });
 
-        return this.filteredEmojis;
+        return this.filteredEmojis.length;
     }
 
     public filterMood(mood): Emoji[] {

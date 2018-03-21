@@ -1,4 +1,4 @@
-
+<script src="plotly-latest.min.js"></script>
 <div layout-gt-sm="row">
     <div flex-gt-sm="80" flex-offset-gt-sm="10">
         <mat-card>
@@ -7,26 +7,27 @@
 
 
     <mat-card-content>
-<img id="week-chart" style="width:600px;height:250px;">
+
+        <div id="week-chart" style="width:600px;height:250px;"></div>
 
 
-
-{{this.filterDayOfWeek('Sun').length}}
+{{this.numberByDay('Sun')}}
         testing
 
 
     </mat-card-content>
         </mat-card>
+
     </div>
 </div>
 
 
 
 
-<script src="plotly-latest.min.js">
+<script>
     week_chart = document.getElementById('week-chart');
     var days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
-    var happy_daily_totals = [this.filterDayOfWeek('Sun').length}, 4, 3, 6, 1, 2, 3];
+    var happy_daily_totals = [5, 4, 3, 6, 1, 2, 3];
     var sad_daily_totals = [6, 7, 3, 1, 5, 4, 3];
 
     var happy_data = {
