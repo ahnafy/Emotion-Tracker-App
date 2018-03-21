@@ -8,6 +8,8 @@ import umm3601.emoji.EmojiController;
 import umm3601.emoji.EmojiRequestHandler;
 import umm3601.goal.GoalRequestHandler;
 import umm3601.goal.GoalController;
+import umm3601.journal.JournalController;
+import umm3601.journal.JournalRequestHandler;
 
 import java.io.IOException;
 
@@ -23,11 +25,16 @@ public class Server {
 
         MongoClient mongoClient = new MongoClient();
         MongoDatabase emojiDatabase = mongoClient.getDatabase(databaseName);
+        MongoDatabase journalDatabase = mongoClient.getDatabase(databaseName);
+
 
         EmojiController emojiController = new EmojiController(emojiDatabase);
         EmojiRequestHandler emojiRequestHandler = new EmojiRequestHandler(emojiController);
         GoalController goalController = new GoalController(emojiDatabase);
         GoalRequestHandler goalRequestHandler = new GoalRequestHandler(goalController);
+        JournalController journalController = new JournalController(journalDatabase);
+        JournalRequestHandler journalRequestHandler = new JournalRequestHandler(journalController);
+
 
         //Configure Spark
         port(serverPort);
@@ -75,6 +82,16 @@ public class Server {
         get("api/goals/:id", goalRequestHandler::getGoalJSON);
         post("api/emojis/new", emojiRequestHandler::addNewEmoji);
         post("api/goals/new", goalRequestHandler::addNewGoal);
+
+        /// Journal Endpoints ///////////////////////////
+        /////////////////////////////////////////////
+
+        get("api/journals", journalRequestHandler::getJournals);
+        get("api/journals/:id", journalRequestHandler::getJournalJSON);
+        post("api/journals/new", journalRequestHandler::addNewJournal);
+        post("api/journals/edit", journalRequestHandler::editJournal);
+
+
         // An example of throwing an unhandled exception so you can see how the
         // Java Spark debugger displays errors like this.
         get("api/error", (req, res) -> {
