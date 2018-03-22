@@ -1,4 +1,9 @@
 import {Component} from '@angular/core';
+import {Observable} from "rxjs/Observable";
+import {resources} from "./resources";
+import {ResourcesService} from "./resources.service";
+import {MatDialog} from "@angular/material/dialog";
+
 
 @Component({
     selector: 'resources-component',
