@@ -7,8 +7,8 @@ import {AddGoalComponent} from "./add-goals.component";
 
 @Component({
     selector: 'app-goals-component',
-    templateUrl: './goal.component.html',
-    styleUrls: ['./goal.component.css']
+    templateUrl: './goals.component.html',
+    styleUrls: ['./goals.component.css']
 })
 export class GoalsComponent implements OnInit{
     // These are public so that tests can reference them (.spec.ts)

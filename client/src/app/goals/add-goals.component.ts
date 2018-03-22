@@ -4,7 +4,7 @@ import {Goal} from './goals';
 
 @Component({
     selector: 'app-add-goals.component',
-    templateUrl: 'add-goal.component.html',
+    templateUrl: 'add-goals.component.html',
 })
 export class AddGoalComponent {
     constructor(
