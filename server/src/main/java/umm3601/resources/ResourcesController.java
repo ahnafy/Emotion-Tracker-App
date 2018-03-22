@@ -22,9 +22,9 @@ public class ResourcesController {
     private final MongoCollection<Document> resourcesCollection;
 
     /**
-     * Construct a controller for goals.
+     * Construct a controller for resources.
      *
-     * @param database the database containing goals data
+     * @param database the database containing resources data
      */
     public ResourcesController(MongoDatabase database) {
         gson = new Gson();
@@ -32,18 +32,18 @@ public class ResourcesController {
         resourcesCollection = database.getCollection("resources");
     }
 
-    public String getResourcesID(String id) {
+    public String getResources(String id) {
 
-        FindIterable<Document> jsonResourcess
+        FindIterable<Document> jsonResources
             = resourcesCollection
             .find(eq("_id", new ObjectId(id)));
 
-        Iterator<Document> iterator = jsonResourcess.iterator();
+        Iterator<Document> iterator = jsonResources.iterator();
         if (iterator.hasNext()) {
             Document resource = iterator.next();
             return resource.toJson();
         } else {
-            // We didn't find the desired Goal
+            // We didn't find the desired Resource
             return null;
         }
     }
@@ -57,14 +57,14 @@ public class ResourcesController {
             filterDoc = filterDoc.append("name", targetName);
         }
 
-        FindIterable<Document> matchingResourcess = resourcesCollection.find(filterDoc);
+        FindIterable<Document> matchingResources = resourcesCollection.find(filterDoc);
 
 
-        return JSON.serialize(matchingResourcess);
+        return JSON.serialize(matchingResources);
     }
 
 
-    public String addNewResources(String ownerId, String name, String email, String phonenumber) {
+    public String addNewResources(String id, String name, String email, String phonenumber) {
 
         Document newResources = new Document();
         newResources.append("name", name);
@@ -75,10 +75,10 @@ public class ResourcesController {
         try {
             resourcesCollection.insertOne(newResources);
 
-            ObjectId id = newResources.getObjectId("_id");
+            ObjectId Id = newResources.getObjectId("_id");
             System.err.println("Successfully added new resource [_id=" + id + ", name=" + name + ", email=" + email + " phonenumber=" + phonenumber + ']');
 
-            return JSON.serialize(id);
+            return JSON.serialize(Id);
         } catch (MongoException me) {
             me.printStackTrace();
             return null;
