@@ -18,4 +18,5 @@ package umm3601.resources;
     import static com.mongodb.client.model.Filters.eq;
 
 public class ResourcesRequestHandler {
+
 }
