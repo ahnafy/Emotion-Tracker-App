@@ -144,9 +144,13 @@ export class ChartsComponent implements OnInit {
             return !weekday || emoji.date.indexOf(weekday) !== -1;
         });
 
+        console.log(typeof this.filteredEmojis.length);
         return this.filteredEmojis.length;
     }
 
+    public static returnfive(): number {
+        return 5;
+    }
 
     /**
      * Starts an asynchronous operation to update the emojis list
