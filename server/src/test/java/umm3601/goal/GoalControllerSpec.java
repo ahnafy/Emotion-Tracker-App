@@ -32,7 +32,7 @@ public class GoalControllerSpec
     public void clearAndPopulateDB() throws IOException {
         MongoClient mongoClient = new MongoClient();
         MongoDatabase db = mongoClient.getDatabase("test");
-        MongoCollection<Document> goalDocuments = db.getCollection("goals");
+        MongoCollection<Document> goalDocuments = db.getCollection("goal");
         goalDocuments.drop();
         List<Document> testGoals = new ArrayList<>();
         testGoals.add(Document.parse("{\n" +
@@ -113,7 +113,7 @@ public class GoalControllerSpec
         String jsonResult = goalController.getGoals(emptyMap);
         BsonArray docs = parseJsonArray(jsonResult);
 
-        assertEquals("Should be 4 goals", 4, docs.size());
+        assertEquals("Should be 4 goal", 4, docs.size());
         List<String> names = docs
             .stream()
             .map(GoalControllerSpec::getOwner)

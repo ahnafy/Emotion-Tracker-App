@@ -69,7 +69,7 @@ public class Server {
         redirect.get("/reports", "/");
         redirect.get("/resources", "/");
         redirect.get("/journaling", "/");
-        redirect.get("/goals", "/");
+        redirect.get("/goal", "/");
 
         /// User Endpoints ///////////////////////////
         /////////////////////////////////////////////
@@ -78,10 +78,10 @@ public class Server {
 
         get("api/emojis", emojiRequestHandler::getEmojis);
         get("api/emojis/:id", emojiRequestHandler::getEmojiJSON);
-       get("api/goals", goalRequestHandler::getGoals);
-        get("api/goals/:id", goalRequestHandler::getGoalJSON);
+       get("api/goal", goalRequestHandler::getGoals);
+        get("api/goal/:id", goalRequestHandler::getGoalJSON);
         post("api/emojis/new", emojiRequestHandler::addNewEmoji);
-        post("api/goals/new", goalRequestHandler::addNewGoal);
+        post("api/goal/new", goalRequestHandler::addNewGoal);
 
         /// Journal Endpoints ///////////////////////////
         /////////////////////////////////////////////
