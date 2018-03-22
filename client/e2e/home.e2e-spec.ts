@@ -26,7 +26,6 @@ describe('', () => {
     });
 
 
-
     it('should type something in filter name box and add an entry', () => {
         HomePage.navigateTo();
         HomePage.typeAName('Jubair');
@@ -35,24 +34,22 @@ describe('', () => {
 
     });
 
-    it("should type a name and then move the slider positively and click submit. It then navigates to to the report page, clicks the owner box, and filters by roch and check if the first element is equal to roch",() => {
+    it("should type a name and then move the slider positively and click submit. It then navigates to to the report page, clicks the owner box, and filters by roch and check if the first element is equal to roch", () => {
         HomePage.navigateTo();
         HomePage.typeAName('Roch');
-         HomePage.selectTheSlider();
-         HomePage.SlideTheSliderUp();
-         HomePage.SlideTheSliderUp();
+        HomePage.selectTheSlider();
+        HomePage.SlideTheSliderUp();
+        HomePage.SlideTheSliderUp();
         expect(element(by.id('5emoji')).isPresent()).toBeTruthy(); //check that the correct emoji is displayed
         page.clickSubmitButton();
         HomePage.navigateToReports();
         HomePage.filterOwner('Roch');
 
-        expect( page.getUniqueOwner()).toContain('Roch');
-
-
+        expect(page.getUniqueOwner()).toContain('Roch');
 
     });
 
-    it("should type a name and then move the slider positively and negatiely and click submit",() => {
+    it("should type a name and then move the slider positively and negatiely and click submit", () => {
         HomePage.navigateTo();
         HomePage.typeAName('Andy');
         HomePage.selectTheSlider();
@@ -68,11 +65,26 @@ describe('', () => {
         HomePage.navigateToReports();
         HomePage.filterOwner('Andy');
 
-        expect( page.getUniqueOwner()).toContain('Andy');
+        expect(page.getUniqueOwner()).toContain('Andy');
     });
 
-
-
-
+    it('should make sure that each nav-bar item exists and then clicks each ', () => {
+        browser.driver.manage().window().maximize(); //makes E2E test window fullscreen :)
+        HomePage.navigateTo();
+        page.journalButtonExists();
+        page.clickJournalButton();
+        HomePage.navigateTo();
+        page.resourceButtonExists();
+        page.clickResourceButton();
+        HomePage.navigateTo();
+        page.reportButtonExists();
+        page.clickReportButton();
+        HomePage.navigateTo();
+        page.goalButtonExists();
+        page.clickGoalButton();
+        HomePage.navigateTo();
+        page.crisisButtonExists();
+        page.clickCrisisButton();
+    });
 
 });

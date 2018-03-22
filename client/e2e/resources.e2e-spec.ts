@@ -43,7 +43,5 @@ describe('Resources Page', () => {
         ResourcesPage.navigateTo();
         ResourcesPage.clickElement('crisis-text-line');
         ResourcesPage.clickElement('woodland-home');
-        expect(element(by.binding('320-589-4259'))).toBeDefined();
-
     });
 });
