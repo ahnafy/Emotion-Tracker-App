@@ -1,26 +1,64 @@
+<body>
+    <mat-toolbar color="primary">
 
-<td-layout #layout>
-    <td-navigation-drawer id="navBar" flex sidenavTitle="Menu" >
-        <mat-nav-list>
-            <a mat-list-item [routerLink]="['/']" (click)="layout.close()" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"><mat-icon>mood</mat-icon>Home</a>
-            <!--
-            We have added ids specifically for each of the items on the menu bar for E2E tests to recognize where to highlight and select
-            Journaling id= journal, Resources id = rsrc, Reports id = rep -Ahnaf
-            -->
-            <a mat-list-item id="journal" [routerLink]="['/journaling']" (click)="layout.close()" routerLinkActive="nav-active"><mat-icon>import_contacts</mat-icon>Journaling</a>
-            <a mat-list-item id="rsrc" [routerLink]="['/resources']" (click)="layout.close()" routerLinkActive="nav-active"><mat-icon><i class="material-icons">format_list_numbered</i></mat-icon>Resources</a>
-            <a mat-list-item id="rep" [routerLink]="['/reports']" (click)="layout.close()" routerLinkActive="nav-active"><mat-icon><i class="material-icons">assessment</i></mat-icon>Reports</a>
-            <a mat-list-item id="goals" [routerLink]="['/goals']" (click)="layout.close()" routerLinkActive="nav-active"><mat-icon><i class="material-icons">accessibility</i></mat-icon>Goals</a>
-            <div class="move">
-                <button mat-raised-button color="warn" id="crisisButton" (click)="openDialog()"><mat-icon class="icons">local_phone</mat-icon>Crisis Button</button>
-            </div>
+        <button mat-button [routerLink]="['/']" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"><mat-icon>mood</mat-icon>Home</button>
 
-        </mat-nav-list>
-    </td-navigation-drawer>
-    <td-layout-nav  toolbarTitle="Iteration 1" navigationRoute="/">
-        <button mat-icon-button td-menu-button tdLayoutToggle>
-            <mat-icon>menu</mat-icon>
-        </button>
+        <span class="fill-remaining-space"></span>
+        <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+            <button mat-button id="journal" [routerLink]="['/journals']" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"><mat-icon class="material-icons">import_contacts</mat-icon>Journals</button>
+            <button mat-button id="rsrc" [routerLink]="['/resources']" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"><mat-icon><i class="material-icons">format_list_numbered</i></mat-icon>Resources</button>
+            <button mat-button id="rep" [routerLink]="['/reports']" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"><mat-icon><i class="material-icons">assessment</i></mat-icon>Reports</button>
+            <button mat-button id="goals" [routerLink]="['/goals']" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"><mat-icon><i class="material-icons">accessibility</i></mat-icon>Goals</button>
+            <button mat-raised-button color="warn" id="crisisButton" (click)="openDialog()"><mat-icon class="icons">local_phone</mat-icon>Crisis Button</button>
+        </div>
+
+        <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm><mat-icon>menu</mat-icon></button>
+        <button mat-raised-button color="warn" id="crisisButton" (click)="openDialog()" [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm><mat-icon class="icons">local_phone</mat-icon>Crisis Button</button>
+    </mat-toolbar>
+
+    <mat-menu x-position="before" #menu="matMenu">
+        <button mat-menu-item routerLink="/journals">Journals</button>
+        <button mat-menu-item routerLink="/resources">Resources</button>
+        <button mat-menu-item routerLink="/reports">Reports</button>
+        <button mat-menu-item routerLink="/goals">Goals</button>
+    </mat-menu>
+
         <router-outlet></router-outlet>
-    </td-layout-nav>
-</td-layout>
+</body>
+
+<!-- OLD Simple Nav-bar code; Keep in case code above is unwanted/bad
+<body>
+    <div>
+        <nav mat-tab-nav-bar flex>
+            <div>
+            <mat-nav-list>
+                <div class="move">
+                <a mat-list-item [routerLink]="['/']" (click)="layout.close()" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"><mat-icon>mood</mat-icon>Home</a>
+                &lt;!&ndash;
+                 We have added ids specifically for each of the items on the menu bar for E2E tests to recognize where to highlight and select
+                Journaling id= journal, Resources id = rsrc, Reports id = rep -Ahnaf
+                &ndash;&gt;
+                </div>
+
+                <div class="move">
+                <a mat-tab-link id="journal" [routerLink]="['/journals']" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"><mat-icon class="material-icons">import_contacts</mat-icon>Journals</a>
+                </div>
+
+                <div class="move">
+                <a mat-tab-link id="rsrc" [routerLink]="['/resources']" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"><mat-icon><i class="material-icons">format_list_numbered</i></mat-icon>Resources</a>
+                </div>
+
+                <div class="move">
+                <a mat-tab-link id="rep" [routerLink]="['/reports']" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"><mat-icon><i class="material-icons">assessment</i></mat-icon>Reports</a>
+                </div>
+
+                <div class="move">
+                <a mat-tab-link id="goals" [routerLink]="['/goals']" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"><mat-icon><i class="material-icons">accessibility</i></mat-icon>Goals</a>
+                </div>
+
+            </mat-nav-list>
+            </div>
+        </nav>
+    </div>
+    <router-outlet></router-outlet>
+</body>-->

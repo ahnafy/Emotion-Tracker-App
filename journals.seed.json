@@ -1,0 +1,26 @@
+[
+    {
+        "_id": {
+            "$oid": "58af3a600343927e48e8720f"
+        },
+        "subject": "My busy Saturday",
+        "body": "What a busy day today!  I never had a moment’s rest.  The day started with my alarm clock blaring at 7am.  I had to be at the Smith’s house by 8am to baby-sit. I really didn’t want to wake up so early on a Saturday, but I’m saving money to buy a new iPod and couldn’t say no to an all-day babysitting job.",
+        "date": "Sat Jan 27 13:36:47 CST 2018"
+    },
+    {
+        "_id": {
+            "$oid": "58af3a600343927e48e87215"
+        },
+        "subject": "I listened to this great song today",
+        "body": "Good friends we have. Oh. Good friends we have lost along the way. Yeah! In this great future you cant forget your past. So dry your tears, I say. Yeah.",
+        "date": "Fri Mar 2 13:36:47 CST 2018"
+    },
+    {
+        "_id": {
+            "$oid": "58af3a600343927e48e8722c"
+        },
+        "subject": "Wednesday",
+        "body": "Today was an okay day.",
+        "date": "Sat Mar 3 14:39:47 CST 2018"
+    }
+]
