@@ -15,7 +15,7 @@
         {{this.getdate()}}
 
         testing
-        {{filterWeek('', '').length}}
+        {{filterWeek('2', '2').length}}
         {{this.numberByDay('Thu', filterMood('3', filterWeek('', '')))}}
         <a id="hsun" name="{{this.numberByDay('Sun')}}"></a>
 
@@ -33,7 +33,7 @@
 <script>
     week_chart = document.getElementById('week-chart');
     var days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
-    var happy_daily_totals = [6, 4, 3, 6, 1, 2, 3];
+    var happy_daily_totals = [5, 4, 3, 6, 1, 2, 3];
     var sad_daily_totals = [6, 7, 3, 1, 5, 4, 3];
 
     var happy_data = {

@@ -98,8 +98,8 @@ export class ChartsComponent implements OnInit {
         this.filteredEmojis = this.emojis;
 
         //for testing purposes, manually setting start and end date
-        this.startDate = "Sun Mar 18 2018 10:00:00 GMT-0500 (CDT)";
-        this.endDate = "Sat Mar 24 2018 20:00:00 GMT-0500 (CDT)";
+        this.startDate = new Date("Sun Mar 18 2018 10:00:00 GMT-0500 (CDT)");
+        this.endDate = new Date("Sat Mar 24 2018 20:00:00 GMT-0500 (CDT)");
 
         // Filter by startDate
         if (searchStartDate != null) {
