@@ -22,6 +22,8 @@ import {JournalingComponent} from "./journaling/journaling.component";
 import {GoalsComponent} from "./goals/goals.component";
 import {GoalsService} from "./goals/goals.service";
 import {AddGoalComponent} from "./goals/add-goals.component";
+import {ResourcesService} from "./resources/resources.service";
+import {AddResourcesComponent} from "./resources/add-resources.component";
 
 import {JournalListComponent} from "./journals/journal-list.component";
 import {JournalListService} from "./journals/journal-list.service";
@@ -49,7 +51,9 @@ import {EditJournalComponent} from './journals/edit-journal.component';
         AddGoalComponent,
         JournalListComponent,
         AddJournalComponent,
-        EditJournalComponent
+        EditJournalComponent,
+        AddResourcesComponent
+
     ],
     providers: [
         UserListService,
@@ -57,6 +61,8 @@ import {EditJournalComponent} from './journals/edit-journal.component';
         ReportsService,
         GoalsService,
         JournalListService,
+        ResourcesService,
+
         {provide: APP_BASE_HREF, useValue: '/'},
         {provide: MATERIAL_COMPATIBILITY_MODE, useValue: true}
     ],
@@ -65,8 +71,9 @@ import {EditJournalComponent} from './journals/edit-journal.component';
         ResponseComponent,
         AddGoalComponent,
         AddJournalComponent,
-        EditJournalComponent
-        //add resource component would go here//
+        EditJournalComponent,
+        AddResourcesComponent
+
     ],
     bootstrap: [AppComponent]
 })
