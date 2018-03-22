@@ -22,6 +22,7 @@ import {JournalingComponent} from "./journaling/journaling.component";
 import {GoalsComponent} from "./goals/goals.component";
 import {GoalsService} from "./goals/goals.service";
 import {AddGoalComponent} from "./goals/add-goals.component";
+import {CrisisButtonComponent} from "./home/crisis-button.component";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {JournalListComponent} from "./journals/journal-list.component";
 import {JournalListService} from "./journals/journal-list.service";
@@ -48,9 +49,11 @@ import {EditJournalComponent} from './journals/edit-journal.component';
         JournalingComponent,
         GoalsComponent,
         AddGoalComponent,
+        CrisisButtonComponent,
+        AddGoalComponent,
         JournalListComponent,
         AddJournalComponent,
-        EditJournalComponent
+        EditJournalComponent,
     ],
     providers: [
         UserListService,
@@ -64,6 +67,8 @@ import {EditJournalComponent} from './journals/edit-journal.component';
     entryComponents: [
       AddUserComponent,
         ResponseComponent,
+        AddGoalComponent,
+        CrisisButtonComponent,
         AddGoalComponent,
         AddJournalComponent,
         EditJournalComponent

@@ -9,9 +9,11 @@
             <button mat-button id="rsrc" [routerLink]="['/resources']" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"><mat-icon><i class="material-icons">format_list_numbered</i></mat-icon>Resources</button>
             <button mat-button id="rep" [routerLink]="['/reports']" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"><mat-icon><i class="material-icons">assessment</i></mat-icon>Reports</button>
             <button mat-button id="goals" [routerLink]="['/goals']" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"><mat-icon><i class="material-icons">accessibility</i></mat-icon>Goals</button>
+            <button mat-raised-button color="warn" id="crisisButton" (click)="openDialog()"><mat-icon class="icons">local_phone</mat-icon>Crisis Button</button>
         </div>
 
         <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm><mat-icon>menu</mat-icon></button>
+        <button mat-raised-button color="warn" (click)="openDialog()" [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm><mat-icon class="icons">local_phone</mat-icon>Crisis Button</button>
     </mat-toolbar>
 
     <mat-menu x-position="before" #menu="matMenu">
