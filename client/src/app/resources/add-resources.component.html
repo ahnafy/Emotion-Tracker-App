@@ -12,8 +12,8 @@
                 </mat-form-field>
                 <mat-form-field>
                     <input matInput #input id="emailField" placeholder="Email" [(ngModel)]="data.resources.email">
-
-              <button mat-button id="confirmAddresourcesButton" [mat-dialog-close]="data.resources" type="button">Add Contact</button>
+                    </mat-form-field>
+                    <button mat-button id="confirmAddresourcesButton" [mat-dialog-close]="data.resources" type="button">Add Contact</button>
             </mat-card-content>
         </mat-card>
         <button mat-raised-button id="exitWithoutAddingButton" (click)="onNoClick()" type="button">Exit</button>
