@@ -1,6 +1,7 @@
 export interface resources {
-    resourceName: string;
-    resourceBody: string;
-    resourcePhone: string;
-    resourcesUrl: string;
+    _id: string;
+    name: string;
+    email: string;
+    phone: string;
+
 }

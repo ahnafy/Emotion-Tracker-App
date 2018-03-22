@@ -1,4 +1,6 @@
 import {Component} from '@angular/core';
+import {CrisisButtonComponent} from "./home/crisis-button.component";
+import {MatDialog} from '@angular/material';
 
 @Component({
     selector: 'app-root',
@@ -7,4 +9,16 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
     title = 'Sunshine Journal';
+
+
+constructor(public dialog: MatDialog) {
+
+}
+
+openDialog(): void{
+    const dialogRef = this.dialog.open(CrisisButtonComponent,{
+        width: '500px',
+        height: '500px'
+    });
+}
 }

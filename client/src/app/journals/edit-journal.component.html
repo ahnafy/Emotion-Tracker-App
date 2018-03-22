@@ -1,0 +1,19 @@
+<div class="add-journal" layout-gt-sm="row">
+    <div flex-gt-sm="80" flex-offset-gt-sm="10">
+        <mat-card>
+            <mat-card-title>Edit Journal</mat-card-title>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-form-field>
+                    <input matInput #input id="subjectField" placeholder="Subject" [(ngModel)]="data.journal.subject">
+                </mat-form-field>
+                <mat-form-field>
+                    <textarea matInput #input id="bodyField" matTextareaAutosize placeholder="Body" [(ngModel)]="data.journal.body"></textarea>
+                </mat-form-field>
+
+                <button mat-button id="confirmAddJournalButton" [mat-dialog-close]="data.journal" type="button">Edit journal</button>
+            </mat-card-content>
+        </mat-card>
+        <button mat-raised-button id="exitWithoutAddingButton" (click)="onNoClick()" type="button">Exit Without Saving</button>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<body>
+<div>
+
+        <button id = "addNewJournal" mat-raised-button (click)="openDialog()">Add A New Journal</button>
+
+</div>
+
+
+<div layout-gt-sm="row">
+    <div flex-gt-sm="80" flex-offset-gt-sm="10">
+        <mat-card>
+            <mat-card-title id="journal-list-title">Journals</mat-card-title>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-form-field>
+                    <input matInput id="journalSubject" #input type="text" placeholder="Filter by subject" (input)="journalSubject = $event.target.value">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput id="journalBody" #input type="text" placeholder="Filter by body" (input)="journalBody = $event.target.value">
+                </mat-form-field>
+
+                <mat-accordion *ngIf="journals; else journalsError" >
+                    <mat-expansion-panel #elem class="journals" [id]="journal._id['$oid']" [expanded]="this.isHighlighted(journal)" *ngFor="let journal of this.filterJournals(journalSubject, journalBody)">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title >{{journal.subject}}</mat-panel-title>
+
+                        </mat-expansion-panel-header>
+                        <mat-panel-description>Body: {{journal.body}}</mat-panel-description>
+                        <mat-panel-description>Date: {{journal.date}}</mat-panel-description>
+                        <mat-panel-description><button mat-raised-button (click)="openDialogReview(journal._id['$oid'], journal.subject, journal.body, journal.date)">Edit Journal</button> </mat-panel-description>
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <!-- Maybe this should be a pop-up instead of just a text message? Not sure. -->
+                <ng-template #journalsError>
+                    <mat-error>
+                        There was a problem loading the journals. Possibly the server is down or perhaps there are network
+                        issues.
+                    </mat-error>
+                    <mat-error>
+                        Please wait a bit and try again or start the server.
+                    </mat-error>
+                </ng-template>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+</body>
