@@ -1,13 +1,11 @@
-mat-nav-list {
-    word-spacing: 50px;
-    display: block;
-    text-align: center;
-}
-
-.move { display: inline-block; }
-
 body{
     font-size:150%;
-    background-color: orange;
+    background-image: url("http://www.lovethisgif.com/uploaded_images/118688-Pics-Photos-Heathers-Animated-Gif-Animations-Web-Backgrounds.gif");
     font-family: inherit;
+}
+
+.fill-remaining-space {
+    /*!*This fills the remaining space, by using flexbox.
+   Every toolbar row uses a flexbox row layout. *!*/
+    flex: 1 1 ;
 }
