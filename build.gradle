@@ -15,7 +15,7 @@ task seedEmojiData(type: Exec) {
 
 task seedGoalData(type: Exec) {
     executable = "mongoimport"
-    args = ["-d", "dev", "-c", "goal", "--file", "goal.seed.json", "--jsonArray"]
+    args = ["-d", "dev", "-c", "goal", "--file", "goals.seed.json", "--jsonArray"]
 }
 
 task seedJournalData(type: Exec) {
