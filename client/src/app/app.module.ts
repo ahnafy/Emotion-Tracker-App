@@ -49,11 +49,11 @@ import {EditJournalComponent} from './journals/edit-journal.component';
         JournalingComponent,
         GoalsComponent,
         AddGoalComponent,
-        CrisisButtonComponent
+        CrisisButtonComponent,
         AddGoalComponent,
         JournalListComponent,
         AddJournalComponent,
-        EditJournalComponent
+        EditJournalComponent,
     ],
     providers: [
         UserListService,
