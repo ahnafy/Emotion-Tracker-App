@@ -36,3 +36,6 @@ describe('AppComponent', () => {
         expect(appInstance.title).toEqual('Sunshine Journal');
     });
 });
+
+
+
