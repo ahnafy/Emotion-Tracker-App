@@ -11,8 +11,8 @@ public class GoalRequestHandler {
     public GoalRequestHandler(GoalController goalController){
         this.goalController = goalController;
     }
-    /**Method called from Server when the 'api/goals/:id' endpoint is received.
-     * Get a JSON response with a list of all the goals in the database.
+    /**Method called from Server when the 'api/goal/:id' endpoint is received.
+     * Get a JSON response with a list of all the goal in the database.
      *
      * @param req the HTTP request
      * @param res the HTTP response
@@ -44,12 +44,12 @@ public class GoalRequestHandler {
 
 
 
-    /**Method called from Server when the 'api/goals' endpoint is received.
+    /**Method called from Server when the 'api/goal' endpoint is received.
      * This handles the request received and the response
      * that will be sent back.
      *@param req the HTTP request
      * @param res the HTTP response
-     * @return an array of goals in JSON formatted String
+     * @return an array of goal in JSON formatted String
      */
     public String getGoals(Request req, Response res)
     {
@@ -58,7 +58,7 @@ public class GoalRequestHandler {
     }
 
 
-    /**Method called from Server when the 'api/goals/new'endpoint is recieved.
+    /**Method called from Server when the 'api/goal/new'endpoint is recieved.
      * Gets specified goal info from request and calls addNewGoal helper method
      * to append that info to a document
      *

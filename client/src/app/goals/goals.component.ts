@@ -7,8 +7,8 @@ import {AddGoalComponent} from "./add-goals.component";
 
 @Component({
     selector: 'app-goals-component',
-    templateUrl: './goals.component.html',
-    styleUrls: ['./goals.component.css']
+    templateUrl: './goal.component.html',
+    styleUrls: ['./goal.component.css']
 })
 export class GoalsComponent implements OnInit{
     // These are public so that tests can reference them (.spec.ts)
@@ -71,7 +71,7 @@ export class GoalsComponent implements OnInit{
     }
 
     /**
-     * Starts an asynchronous operation to update the goals list
+     * Starts an asynchronous operation to update the goal list
      *
      */
     refreshGoals(): Observable<Goal[]> {

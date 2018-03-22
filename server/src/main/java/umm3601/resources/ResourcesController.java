@@ -54,6 +54,9 @@ public class ResourcesController {
 
         if (queryParams.containsKey("name")) {
             String targetName = (queryParams.get("name")[0]);
+            Document contentRegQuery = new Document();
+            contentRegQuery.append("$regex", targetName);
+            contentRegQuery.append("$options", "i");
             filterDoc = filterDoc.append("name", targetName);
         }
 
