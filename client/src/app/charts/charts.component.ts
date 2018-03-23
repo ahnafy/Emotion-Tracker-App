@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit, OnChanges} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Emoji} from "../emoji";
 import {ReportsService} from "../reports/reports.service";
@@ -61,9 +61,9 @@ export class ChartsComponent implements AfterViewInit, OnInit{
 
         //for testing purposes, manually setting start and end date
         // this.startDate = new Date("Sun Mar 18 2018 10:00:00 GMT-0500 (CDT)");
-        this.startDate = new Date("Fri Sep 24 1971 06:39:55 GMT+0000 (UTC)");
+        // this.startDate = new Date("Fri Sep 24 1971 06:39:55 GMT+0000 (UTC)");
         // this.endDate = new Date("Sat Mar 24 2018 20:00:00 GMT-0500 (CDT)");
-        this.endDate = new Date("Sat Mar 24 2018 20:00:00 GMT-0500 (CDT)");
+        // this.endDate = new Date("Sat Mar 24 2018 20:00:00 GMT-0500 (CDT)");
 
         // Filter by startDate
         if (startdate != null) {
@@ -102,7 +102,8 @@ export class ChartsComponent implements AfterViewInit, OnInit{
      *
      */
 
-    ngAfterViewInit(): void {
+    buildChart(): void {
+
         this.canvas = document.getElementById("myChart");
         this.ctx = this.canvas;
 
@@ -198,6 +199,12 @@ export class ChartsComponent implements AfterViewInit, OnInit{
                 }
             }
         });
+    }
+
+
+    ngAfterViewInit(): void {
+
+        this.buildChart();
     }
 
     refreshEmojis(): Observable<Emoji[]> {
