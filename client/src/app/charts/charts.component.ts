@@ -2,7 +2,7 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Emoji} from "../emoji";
 import {ReportsService} from "../reports/reports.service";
-//import {Chart} from 'chart.js';
+
 import * as Chart from 'chart.js';
 
 
@@ -12,7 +12,7 @@ import * as Chart from 'chart.js';
     styleUrls: ['./charts.component.css'],
 })
 
-export class ChartsComponent implements AfterViewInit {
+export class ChartsComponent implements AfterViewInit, OnInit{
     // These are public so that tests can reference them (.spec.ts)
     public emojis: Emoji[];
     public filteredEmojis: Emoji[];
@@ -20,7 +20,7 @@ export class ChartsComponent implements AfterViewInit {
     startDate;
     endDate;
     getDate;
-    myChart: any;
+    canvas: any;
     ctx: any;
 
     public week_chart: any;
@@ -71,7 +71,7 @@ export class ChartsComponent implements AfterViewInit {
         return this.filteredSummarys;
     }
     */
-/*
+
     public filterEmojis(searchOwner): Emoji[] {
 
         this.filteredEmojis = this.emojis;
@@ -85,16 +85,8 @@ export class ChartsComponent implements AfterViewInit {
             });
         }
 
-        // Sort by date
-        this.filteredEmojis = this.filteredEmojis.sort((emoji1, emoji2) => {
-            const date1 = new Date(emoji1.date);
-            const date2 = new Date(emoji2.date);
-            return date2.valueOf() - date1.valueOf();
-        });
-
-
         return this.filteredEmojis;
-    } */
+    }
 
     //get current date... good for debug
 
@@ -106,7 +98,9 @@ export class ChartsComponent implements AfterViewInit {
         this.filteredEmojis = this.emojis;
 
         //for testing purposes, manually setting start and end date
-        this.startDate = new Date("Sun Mar 18 2018 10:00:00 GMT-0500 (CDT)");
+       // this.startDate = new Date("Sun Mar 18 2018 10:00:00 GMT-0500 (CDT)");
+        this.startDate = new Date("Fri Sep 24 1971 06:39:55 GMT+0000 (UTC)");
+       // this.endDate = new Date("Sat Mar 24 2018 20:00:00 GMT-0500 (CDT)");
         this.endDate = new Date("Sat Mar 24 2018 20:00:00 GMT-0500 (CDT)");
 
         // Filter by startDate
@@ -133,7 +127,6 @@ export class ChartsComponent implements AfterViewInit {
     public filterMood(mood, partiallyFilteredEmotions): Emoji[] {
 
         this.filteredEmojis = partiallyFilteredEmotions;
-
 
         // Filter by value
         this.filteredEmojis = this.filteredEmojis.filter(emoji => {
@@ -199,54 +192,91 @@ export class ChartsComponent implements AfterViewInit {
      *
      */
 
-    refreshEmojis(): Observable<Emoji[]> {
-        // Get Emojis returns an Observable, basically a "promise" that
-        // we will get the data from the server.
-        //
-        // Subscribe waits until the data is fully downloaded, then
-        // performs an action on it (the first lambda)
-
-        const emojiListObservable: Observable<Emoji[]> = this.reportsService.getEmojis();
-        emojiListObservable.subscribe(
-            emojis => {
-                this.emojis = emojis;
-                //this.filterEmojis(this.emojiOwner);
-            },
-            err => {
-                console.log(err);
-            });
-        return emojiListObservable;
-    }
-
-
-
     ngAfterViewInit(): void {
-        var ctx = document.getElementById("myChart");
-        var myChart = new Chart(ctx, {
-            type: 'bar',
+        this.canvas = document.getElementById("myChart");
+        this.ctx = this.canvas;
+
+        let days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
+
+        let very_sad_daily_totals = {"label":"Very Sad",
+            "data":[
+                this.numberByDay('Sun', this.filterMood('1', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Mon', this.filterMood('1', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Tue', this.filterMood('1', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Wed', this.filterMood('1', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Thu', this.filterMood('1', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Fri', this.filterMood('1', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Sat', this.filterMood('1', this.filterWeek(this.startDate, this.endDate)))
+            ],
+            "fill":false,
+            "borderColor":"rgb(150, 0, 100)",
+            "lineTension":0.1};
+
+        let sad_daily_totals = {"label":"Sad",
+            "data":[
+                this.numberByDay('Sun', this.filterMood('2', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Mon', this.filterMood('2', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Tue', this.filterMood('2', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Wed', this.filterMood('2', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Thu', this.filterMood('2', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Fri', this.filterMood('2', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Sat', this.filterMood('2', this.filterWeek(this.startDate, this.endDate)))
+            ],
+            "fill":false,
+            "borderColor":"rgb(150, 75, 75)",
+            "lineTension":0.1};
+
+        let neutral_daily_totals = {"label":"Neutral",
+            "data":[
+                this.numberByDay('Sun', this.filterMood('3', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Mon', this.filterMood('3', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Tue', this.filterMood('3', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Wed', this.filterMood('3', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Thu', this.filterMood('3', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Fri', this.filterMood('3', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Sat', this.filterMood('3', this.filterWeek(this.startDate, this.endDate)))
+            ],
+            "fill":false,
+            "borderColor":"rgb(175, 175, 175)",
+            "lineTension":0.1};
+
+        let happy_daily_totals = {"label":"Happy",
+            "data":[
+                this.numberByDay('Sun', this.filterMood('4', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Mon', this.filterMood('4', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Tue', this.filterMood('4', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Wed', this.filterMood('4', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Thu', this.filterMood('4', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Fri', this.filterMood('4', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Sat', this.filterMood('4', this.filterWeek(this.startDate, this.endDate)))
+            ],
+            "fill":false,
+            "borderColor":"rgb(75, 192, 192)",
+            "lineTension":0.1};
+
+        let very_happy_daily_totals = {"label":"Very Happy",
+            "data":[
+                this.numberByDay('Sun', this.filterMood('5', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Mon', this.filterMood('5', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Tue', this.filterMood('5', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Wed', this.filterMood('5', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Thu', this.filterMood('5', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Fri', this.filterMood('5', this.filterWeek(this.startDate, this.endDate))),
+                this.numberByDay('Sat', this.filterMood('5', this.filterWeek(this.startDate, this.endDate)))
+            ],
+            "fill":false,
+            "borderColor":"rgb(200, 200, 0)",
+            "lineTension":0.1};
+
+        let myChart = new Chart(this.ctx, {
+            type: 'line',
             data: {
-                labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255,99,132,1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
+                labels: days,
+                datasets: [very_sad_daily_totals,
+                    sad_daily_totals,
+                    neutral_daily_totals,
+                    happy_daily_totals,
+                    very_happy_daily_totals]
             },
             options: {
                 scales: {
@@ -258,6 +288,30 @@ export class ChartsComponent implements AfterViewInit {
                 }
             }
         });
+    }
+
+    refreshEmojis(): Observable<Emoji[]> {
+        // Get Emojis returns an Observable, basically a "promise" that
+        // we will get the data from the server.
+        //
+        // Subscribe waits until the data is fully downloaded, then
+        // performs an action on it (the first lambda)
+
+        const emojiListObservable: Observable<Emoji[]> = this.reportsService.getEmojis();
+        emojiListObservable.subscribe(
+            emojis => {
+                this.emojis = emojis;
+                this.filterEmojis(this.emojiOwner);
+            },
+            err => {
+                console.log(err);
+            });
+        return emojiListObservable;
+    }
+
+
+    ngOnInit(): void {
+        this.refreshEmojis();
     }
 
 }
