@@ -22,6 +22,7 @@ import {JournalingComponent} from "./journaling/journaling.component";
 import {GoalsComponent} from "./goals/goals.component";
 import {GoalsService} from "./goals/goals.service";
 import {AddGoalComponent} from "./goals/add-goals.component";
+import {FlexLayoutModule} from "@angular/flex-layout";
 import {ResourcesService} from "./resources/resources.service";
 import {AddResourcesComponent} from "./resources/add-resources.component";
 
@@ -37,6 +38,7 @@ import {EditJournalComponent} from './journals/edit-journal.component';
         HttpClientModule,
         Routing,
         CustomModule,
+        FlexLayoutModule,
     ],
     declarations: [
         AppComponent,

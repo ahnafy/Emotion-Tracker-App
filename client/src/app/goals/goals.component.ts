@@ -71,7 +71,7 @@ export class GoalsComponent implements OnInit{
     }
 
     /**
-     * Starts an asynchronous operation to update the goals list
+     * Starts an asynchronous operation to update the goal list
      *
      */
     refreshGoals(): Observable<Goal[]> {

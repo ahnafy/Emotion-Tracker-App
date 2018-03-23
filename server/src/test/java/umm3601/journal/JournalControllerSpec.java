@@ -91,10 +91,10 @@ public class JournalControllerSpec
         List<String> subjects = docs
             .stream()
             .map(JournalControllerSpec::getSubject)
-            .sorted()
+            //.sorted()
             .collect(Collectors.toList());
         List<String> expectedSubjects = Arrays.asList("Tuesday", "Wednesday", "Thursday", "Friday");
-        //assertEquals("Subjects should match", expectedSubjects, subjects);
+        assertEquals("Subjects should match", expectedSubjects, subjects);
     }
 
     @Test
