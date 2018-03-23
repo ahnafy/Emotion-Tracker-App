@@ -7,8 +7,9 @@
         <div fxLayout="row" fxShow="false" fxShow.gt-sm>
             <button mat-button id="journal" [routerLink]="['/journals']" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"><mat-icon class="material-icons">import_contacts</mat-icon>Journals</button>
             <button mat-button id="rsrc" [routerLink]="['/resources']" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"><mat-icon><i class="material-icons">format_list_numbered</i></mat-icon>Resources</button>
-            <button mat-button id="rep" [routerLink]="['/reports']" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"><mat-icon><i class="material-icons">assessment</i></mat-icon>Reports</button>
+            <button mat-button id="rep" [routerLink]="['/reports']" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"><mat-icon><i class="material-icons">assignment</i></mat-icon>Reports</button>
             <button mat-button id="goals" [routerLink]="['/goals']" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"><mat-icon><i class="material-icons">accessibility</i></mat-icon>Goals</button>
+            <button mat-button id="charts" [routerLink]="['/charts']" routerLinkActive="nav-active" [routerLinkActiveOptions]="{exact: true}"><mat-icon><i class="material-icons">assessment</i></mat-icon>Charts</button>
             <button mat-raised-button color="warn" id="crisisButton" (click)="openDialog()">Crisis</button>
         </div>
 
@@ -21,6 +22,8 @@
         <button mat-menu-item routerLink="/resources">Resources</button>
         <button mat-menu-item routerLink="/reports">Reports</button>
         <button mat-menu-item routerLink="/goals">Goals</button>
+        <button mat-menu-item routerLink="/charts">Charts</button>
+
     </mat-menu>
 
         <router-outlet></router-outlet>

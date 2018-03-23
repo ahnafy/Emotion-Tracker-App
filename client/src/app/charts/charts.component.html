@@ -1,0 +1,26 @@
+
+<div layout-gt-sm="row">
+    <div flex-gt-sm="80" flex-offset-gt-sm="10">
+
+        <mat-card>
+    <mat-card-title id="charts-title">Charts</mat-card-title>
+    <mat-divider></mat-divider>
+
+    <mat-card-content>
+
+        before chart
+        <canvas id="myChart" width="400" height="400"></canvas>
+        after chart
+
+        {{this.getdate()}}
+
+        testing
+
+        {{this.numberByDay('Fri', filterMood('4', filterWeek('', '')))}}
+
+
+    </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+

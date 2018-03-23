@@ -31,6 +31,7 @@ import {JournalListComponent} from "./journals/journal-list.component";
 import {JournalListService} from "./journals/journal-list.service";
 import {AddJournalComponent} from './journals/add-journal.component';
 import {EditJournalComponent} from './journals/edit-journal.component';
+import {ChartsComponent} from "./charts/charts.component";
 
 
 @NgModule({
@@ -53,12 +54,11 @@ import {EditJournalComponent} from './journals/edit-journal.component';
         GoalsComponent,
         AddGoalComponent,
         CrisisButtonComponent,
-        AddGoalComponent,
         JournalListComponent,
         AddJournalComponent,
         EditJournalComponent,
+        ChartsComponent,
         AddResourcesComponent,
-        EditJournalComponent
     ],
     providers: [
         UserListService,
@@ -79,6 +79,8 @@ import {EditJournalComponent} from './journals/edit-journal.component';
         AddGoalComponent,
         AddJournalComponent,
         EditJournalComponent,
+        ChartsComponent,
+        //add resource component would go here//
         AddResourcesComponent
 
     ],
