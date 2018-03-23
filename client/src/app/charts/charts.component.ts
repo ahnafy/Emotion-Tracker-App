@@ -6,7 +6,6 @@ import {ReportsService} from "../reports/reports.service";
 import * as Chart from 'chart.js';
 
 
-
 @Component({
     selector: 'charts-component',
     templateUrl: 'charts.component.html',

@@ -9,7 +9,7 @@
     <mat-card-content>
 
         before chart
-        <div><canvas id="myChart" width="400" height="400"></canvas></div>
+        <canvas id="myChart" width="400" height="400"></canvas>
         after chart
 
         {{this.getdate()}}
@@ -28,11 +28,9 @@
 </div>
 
 
-
-
-
+<!--
 <script>
-    var ctx = document.getElementById("myChart");
+    var ctx = document.getElementById("myChart").getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -70,3 +68,4 @@
         }
     });
 </script>
+-->
