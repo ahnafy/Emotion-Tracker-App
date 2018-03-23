@@ -62,7 +62,7 @@ export class ResourcesComponent implements OnInit{
     }
 
     /**
-     * Starts an asynchronous operation to update the goals list
+     * Starts an asynchronous operation to update the resources list
      *
      */
     refreshResources(): Observable<resources[]> {
