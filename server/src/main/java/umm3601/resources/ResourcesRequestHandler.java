@@ -80,12 +80,13 @@ public class ResourcesRequestHandler {
                     BasicDBObject dbO = (BasicDBObject) o;
                     String id = dbO.getString("_id");
                     String name = dbO.getString("name");
-                    String phonenumber = dbO.getString("phonenumber");
                     String email = dbO.getString("email");
+                    String phone = dbO.getString("phone");
+
 
 //
 //                    System.err.println("Adding new resource [id=" + id + ", name=" + name + " phonenumber=" + phonenumber + "email" + email  + ']');
-                    return resourcesController.addNewResources( id, name, phonenumber, email).toString();
+                    return resourcesController.addNewResources( id, name, email, phone).toString();
                 }
                 catch(NullPointerException e)
                 {

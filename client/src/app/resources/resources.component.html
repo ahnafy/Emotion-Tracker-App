@@ -1,6 +1,6 @@
 <div>
     <ol>
-        <button id = "addNewResources" mat-raised-button>Add your own contact</button>
+        <button id = "addNewResources" mat-raised-button (click)="openDialog()">Add your own contact</button>
     </ol>
 </div>
 
@@ -17,8 +17,8 @@
                     <mat-panel-title id="test" matTooltip="ID: {{resources._id['$oid']}}" >{{resources.name}}</mat-panel-title>
                 </mat-expansion-panel-header>
                 <mat-panel-description >Name: {{resources.name}}</mat-panel-description>
-                <mat-panel-description >Phone Number: {{resources.phonenumber}}</mat-panel-description>
                 <mat-panel-description >Email: {{resources.email}}</mat-panel-description>
+                <mat-panel-description >Phone Number: {{resources.phone}}</mat-panel-description>
             </mat-expansion-panel>
         </mat-accordion>
 

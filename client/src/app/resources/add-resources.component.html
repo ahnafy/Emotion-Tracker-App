@@ -8,11 +8,11 @@
                     <input matInput #input id="nameField" placeholder="Name" [(ngModel)]="data.resources.name">
                 </mat-form-field>
                 <mat-form-field>
-                    <input matInput #input id="phonenumberField" placeholder="Phone Number" [(ngModel)]="data.resources.phonenumber">
+                    <input matInput #input id="emailField" placeholder="Email" [(ngModel)]="data.resources.email">
                 </mat-form-field>
                 <mat-form-field>
-                    <input matInput #input id="emailField" placeholder="Email" [(ngModel)]="data.resources.email">
-                    </mat-form-field>
+                    <input matInput #input id="phonenumberField" placeholder="Phone Number" [(ngModel)]="data.resources.phone">
+                </mat-form-field>
                     <button mat-button id="confirmAddresourcesButton" [mat-dialog-close]="data.resources" type="button">Add Contact</button>
             </mat-card-content>
         </mat-card>

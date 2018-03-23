@@ -26,7 +26,7 @@ export class ResourcesComponent implements OnInit{
     }
 
     openDialog(): void {
-        const newResources: resources = {_id: '', name: '', phonenumber: '', email: ''};
+        const newResources: resources = {_id: '', name: '', email: '', phone: ''};
         const dialogRef = this.dialog.open(AddResourcesComponent, {
             width: '500px',
             data: { resources: newResources }
