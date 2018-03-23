@@ -20,14 +20,14 @@ public class GoalController {
     private final MongoCollection<Document> goalsCollection;
 
     /**
-     * Construct a controller for goals.
+     * Construct a controller for goal.
      *
-     * @param database the database containing goals data
+     * @param database the database containing goal data
      */
     public GoalController(MongoDatabase database) {
         gson = new Gson();
         this.database = database;
-        goalsCollection = database.getCollection("goals");
+        goalsCollection = database.getCollection("goal");
     }
 
     public String getGoal(String id) {

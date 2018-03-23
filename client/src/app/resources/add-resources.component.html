@@ -1,4 +1,21 @@
-<!-- Adding resources will be done here and this is the front end html file for it//
-
-// Coming soon. Not Part of Iteration 1//
--->
+<div class="add-resources" layout-gt-sm="row">
+    <div flex-gt-sm="80" flex-offset-gt-sm="10">
+        <mat-card>
+            <mat-card-title>New Contact</mat-card-title>
+            <mat-divider></mat-divider>
+            <mat-card-content>
+                <mat-form-field>
+                    <input matInput #input id="nameField" placeholder="Name" [(ngModel)]="data.resources.name">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput #input id="emailField" placeholder="Email" [(ngModel)]="data.resources.email">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput #input id="phonenumberField" placeholder="Phone Number" [(ngModel)]="data.resources.phone">
+                </mat-form-field>
+                    <button mat-button id="confirmAddresourcesButton" [mat-dialog-close]="data.resources" type="button">Add Contact</button>
+            </mat-card-content>
+        </mat-card>
+        <button mat-raised-button id="exitWithoutAddingButton" (click)="onNoClick()" type="button">Exit</button>
+    </div>
+</div>

@@ -10,6 +10,8 @@ import umm3601.goal.GoalRequestHandler;
 import umm3601.goal.GoalController;
 import umm3601.journal.JournalController;
 import umm3601.journal.JournalRequestHandler;
+import umm3601.resources.ResourcesRequestHandler;
+import umm3601.resources.ResourcesController;
 
 import java.io.IOException;
 
@@ -26,6 +28,8 @@ public class Server {
         MongoClient mongoClient = new MongoClient();
         MongoDatabase emojiDatabase = mongoClient.getDatabase(databaseName);
         MongoDatabase journalDatabase = mongoClient.getDatabase(databaseName);
+        MongoDatabase resourcesDatabase = mongoClient.getDatabase(databaseName);
+
 
 
         EmojiController emojiController = new EmojiController(emojiDatabase);
@@ -34,6 +38,8 @@ public class Server {
         GoalRequestHandler goalRequestHandler = new GoalRequestHandler(goalController);
         JournalController journalController = new JournalController(journalDatabase);
         JournalRequestHandler journalRequestHandler = new JournalRequestHandler(journalController);
+        ResourcesController resourcesController = new ResourcesController(resourcesDatabase);
+        ResourcesRequestHandler resourcesRequestHandler = new ResourcesRequestHandler(resourcesController);
 
 
         //Configure Spark
@@ -69,7 +75,8 @@ public class Server {
         redirect.get("/reports", "/");
         redirect.get("/resources", "/");
         redirect.get("/journaling", "/");
-        redirect.get("/goals", "/");
+        redirect.get("/goal", "/");
+
 
         /// User Endpoints ///////////////////////////
         /////////////////////////////////////////////
@@ -78,10 +85,14 @@ public class Server {
 
         get("api/emojis", emojiRequestHandler::getEmojis);
         get("api/emojis/:id", emojiRequestHandler::getEmojiJSON);
-       get("api/goals", goalRequestHandler::getGoals);
-        get("api/goals/:id", goalRequestHandler::getGoalJSON);
+        get("api/goal", goalRequestHandler::getGoals);
+        get("api/goal/:id", goalRequestHandler::getGoalJSON);
+        get("api/resources/:id", resourcesRequestHandler::getResourcesJSON);
+        get("api/resources", resourcesRequestHandler::getResources);
         post("api/emojis/new", emojiRequestHandler::addNewEmoji);
-        post("api/goals/new", goalRequestHandler::addNewGoal);
+        post("api/goal/new", goalRequestHandler::addNewGoal);
+        post("api/resources/new", resourcesRequestHandler::addNewResources);
+
 
         /// Journal Endpoints ///////////////////////////
         /////////////////////////////////////////////

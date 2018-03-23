@@ -15,12 +15,17 @@ task seedEmojiData(type: Exec) {
 
 task seedGoalData(type: Exec) {
     executable = "mongoimport"
-    args = ["-d", "dev", "-c", "goals", "--file", "goals.seed.json", "--jsonArray"]
+    args = ["-d", "dev", "-c", "goal", "--file", "goals.seed.json", "--jsonArray"]
 }
 
 task seedJournalData(type: Exec) {
     executable = "mongoimport"
     args = ["-d", "dev", "-c", "journals", "--file", "journals.seed.json", "--jsonArray"]
+}
+
+task seedResourceData(type: Exec) {
+    executable = "mongoimport"
+    args = ["-d", "dev", "-c", "resources", "--file", "resources.seed.json", "--jsonArray"]
 }
 
 task seedMongoDB {
@@ -30,5 +35,6 @@ seedMongoDB.dependsOn(clearMongoDB)
 seedMongoDB.dependsOn(seedEmojiData)
 seedMongoDB.dependsOn(seedGoalData)
 seedMongoDB.dependsOn(seedJournalData)
+seedMongoDB.dependsOn(seedResourceData)
 
 
