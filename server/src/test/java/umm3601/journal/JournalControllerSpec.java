@@ -115,7 +115,7 @@ public class JournalControllerSpec
     }
 
     //add testing for adding new journals
-    /*@Test
+    @Test
     public void addJournalTest(){
         String newId = journalController.addNewJournal("Saturday","Saturday was a bad day");
 
@@ -131,5 +131,5 @@ public class JournalControllerSpec
             .sorted()
             .collect(Collectors.toList());
         assertEquals("Should return the subject of the new journal", "Saturday", name.get(0));
-    }*/
+    }
 }
