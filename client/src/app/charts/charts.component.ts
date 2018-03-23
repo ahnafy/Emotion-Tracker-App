@@ -23,9 +23,6 @@ export class ChartsComponent implements AfterViewInit, OnInit{
     canvas: any;
     ctx: any;
 
-    public week_chart: any;
-
-
 
     // These are the target values used in searching.
     // We should rename them to make that clearer.
@@ -36,41 +33,6 @@ export class ChartsComponent implements AfterViewInit, OnInit{
     constructor(public reportsService: ReportsService) {
 
     }
-/*
-    public filterDates(searchMood: string, searchStartDate: any, searchEndDate: any): Summary[] {
-
-        this.filteredSummarys = this.summarys;
-
-        // Filter by Mood
-        if (searchMood != null) {
-            searchMood = searchMood.toLocaleLowerCase();
-
-            this.filteredSummarys = this.filteredSummarys.filter(summary => {
-                return !searchMood || summary.mood.toLowerCase().indexOf(searchMood) !== -1;
-            });
-        }
-
-        // Filter by startDate
-        if (searchStartDate != null) {
-
-            this.filteredSummarys = this.filteredSummarys.filter(summary => {
-                this.getDate = new Date(summary.date);
-                return this.getDate >= this.startDate;
-            });
-        }
-
-        // Filter by endDate
-        if (searchEndDate != null) {
-
-            this.filteredSummarys = this.filteredSummarys.filter(summary => {
-                this.getDate = new Date(summary.date);
-                return this.getDate <= this.endDate;
-            });
-        }
-
-        return this.filteredSummarys;
-    }
-    */
 
     public filterEmojis(searchOwner): Emoji[] {
 
@@ -94,17 +56,17 @@ export class ChartsComponent implements AfterViewInit, OnInit{
         return Date();
     }
 
-    public filterWeek(searchStartDate, searchEndDate): Emoji[] {
+    filterChart(weekday, mood, startdate, enddate): number {
         this.filteredEmojis = this.emojis;
 
         //for testing purposes, manually setting start and end date
-       // this.startDate = new Date("Sun Mar 18 2018 10:00:00 GMT-0500 (CDT)");
+        // this.startDate = new Date("Sun Mar 18 2018 10:00:00 GMT-0500 (CDT)");
         this.startDate = new Date("Fri Sep 24 1971 06:39:55 GMT+0000 (UTC)");
-       // this.endDate = new Date("Sat Mar 24 2018 20:00:00 GMT-0500 (CDT)");
+        // this.endDate = new Date("Sat Mar 24 2018 20:00:00 GMT-0500 (CDT)");
         this.endDate = new Date("Sat Mar 24 2018 20:00:00 GMT-0500 (CDT)");
 
         // Filter by startDate
-        if (searchStartDate != null) {
+        if (startdate != null) {
 
             this.filteredEmojis = this.filteredEmojis.filter(emoji => {
                 this.getDate = new Date(emoji.date);
@@ -113,80 +75,28 @@ export class ChartsComponent implements AfterViewInit, OnInit{
         }
 
         // Filter by endDate
-        if (searchEndDate != null) {
+        if (enddate != null) {
 
             this.filteredEmojis = this.filteredEmojis.filter(emoji => {
                 this.getDate = new Date(emoji.date);
                 return this.getDate <= this.endDate;
             });
         }
-        return this.filteredEmojis;
-    }
-
-
-    public filterMood(mood, partiallyFilteredEmotions): Emoji[] {
-
-        this.filteredEmojis = partiallyFilteredEmotions;
 
         // Filter by value
         this.filteredEmojis = this.filteredEmojis.filter(emoji => {
             return !mood.toString() || emoji.mood.toString().indexOf(mood.toString()) !== -1;//??????
         });
 
-
-        return this.filteredEmojis;
-    }
-    public numberByDay(weekday, partiallyFilteredEmotions): number {
-
-        this.filteredEmojis = partiallyFilteredEmotions;
-
         // Filter by day of the week
         this.filteredEmojis = this.filteredEmojis.filter(emoji => {
             return !weekday || emoji.date.indexOf(weekday) !== -1;
         });
 
-        console.log(typeof this.filteredEmojis.length);
+        // return number of emojis left after filter
         return this.filteredEmojis.length;
     }
 
-    public static returnfive(): number {
-        return 5;
-    }
-/*
-    public getchart() {
-        this.week_chart = document.getElementById('week-chart');
-        var days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
-// var happy_daily_totals = [4, 3, 6, 1, 2, 3];
-// var bob=returnfive();
-//  happy_daily_totals=unshift(bob,happy_daily_totals);
-// console.log(happy_daily_totals);
-
-
-        var happy_daily_totals = [5, 4, 3, 6, 1, 2, 3];
-        var sad_daily_totals = [6, 7, 3, 1, 5, 4, 3];
-
-        var happy_data = {
-            x: days,
-            y: happy_daily_totals,
-            type: 'scatter',
-            name: 'Happy'
-        };
-
-        var sad_data = {
-            x: days,
-            y: sad_daily_totals,
-            type: 'scatter',
-            name: 'Sad'
-        };
-
-        var layout = {
-            title: 'This Week\'s Emotions'
-        };
-
-        var full_data = [happy_data, sad_data];
-
-         Plotly.plot(this.week_chart, full_data, layout);
-    }*/
     /**
      * Starts an asynchronous operation to update the emojis list
      *
@@ -200,13 +110,13 @@ export class ChartsComponent implements AfterViewInit, OnInit{
 
         let very_sad_daily_totals = {"label":"Very Sad",
             "data":[
-                this.numberByDay('Sun', this.filterMood('1', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Mon', this.filterMood('1', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Tue', this.filterMood('1', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Wed', this.filterMood('1', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Thu', this.filterMood('1', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Fri', this.filterMood('1', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Sat', this.filterMood('1', this.filterWeek(this.startDate, this.endDate)))
+                this.filterChart('Sun', '1', this.startDate, this.endDate),
+                this.filterChart('Mon', '1', this.startDate, this.endDate),
+                this.filterChart('Tue', '1', this.startDate, this.endDate),
+                this.filterChart('Wed', '1', this.startDate, this.endDate),
+                this.filterChart('Thu', '1', this.startDate, this.endDate),
+                this.filterChart('Fri', '1', this.startDate, this.endDate),
+                this.filterChart('Sat', '1', this.startDate, this.endDate)
             ],
             "fill":false,
             "borderColor":"rgb(150, 0, 100)",
@@ -214,13 +124,13 @@ export class ChartsComponent implements AfterViewInit, OnInit{
 
         let sad_daily_totals = {"label":"Sad",
             "data":[
-                this.numberByDay('Sun', this.filterMood('2', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Mon', this.filterMood('2', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Tue', this.filterMood('2', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Wed', this.filterMood('2', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Thu', this.filterMood('2', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Fri', this.filterMood('2', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Sat', this.filterMood('2', this.filterWeek(this.startDate, this.endDate)))
+                this.filterChart('Sun', '2', this.startDate, this.endDate),
+                this.filterChart('Mon', '2', this.startDate, this.endDate),
+                this.filterChart('Tue', '2', this.startDate, this.endDate),
+                this.filterChart('Wed', '2', this.startDate, this.endDate),
+                this.filterChart('Thu', '2', this.startDate, this.endDate),
+                this.filterChart('Fri', '2', this.startDate, this.endDate),
+                this.filterChart('Sat', '2', this.startDate, this.endDate)
             ],
             "fill":false,
             "borderColor":"rgb(150, 75, 75)",
@@ -228,13 +138,13 @@ export class ChartsComponent implements AfterViewInit, OnInit{
 
         let neutral_daily_totals = {"label":"Neutral",
             "data":[
-                this.numberByDay('Sun', this.filterMood('3', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Mon', this.filterMood('3', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Tue', this.filterMood('3', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Wed', this.filterMood('3', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Thu', this.filterMood('3', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Fri', this.filterMood('3', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Sat', this.filterMood('3', this.filterWeek(this.startDate, this.endDate)))
+                this.filterChart('Sun', '3', this.startDate, this.endDate),
+                this.filterChart('Mon', '3', this.startDate, this.endDate),
+                this.filterChart('Tue', '3', this.startDate, this.endDate),
+                this.filterChart('Wed', '3', this.startDate, this.endDate),
+                this.filterChart('Thu', '3', this.startDate, this.endDate),
+                this.filterChart('Fri', '3', this.startDate, this.endDate),
+                this.filterChart('Sat', '3', this.startDate, this.endDate)
             ],
             "fill":false,
             "borderColor":"rgb(175, 175, 175)",
@@ -242,13 +152,13 @@ export class ChartsComponent implements AfterViewInit, OnInit{
 
         let happy_daily_totals = {"label":"Happy",
             "data":[
-                this.numberByDay('Sun', this.filterMood('4', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Mon', this.filterMood('4', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Tue', this.filterMood('4', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Wed', this.filterMood('4', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Thu', this.filterMood('4', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Fri', this.filterMood('4', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Sat', this.filterMood('4', this.filterWeek(this.startDate, this.endDate)))
+                this.filterChart('Sun', '4', this.startDate, this.endDate),
+                this.filterChart('Mon', '4', this.startDate, this.endDate),
+                this.filterChart('Tue', '4', this.startDate, this.endDate),
+                this.filterChart('Wed', '4', this.startDate, this.endDate),
+                this.filterChart('Thu', '4', this.startDate, this.endDate),
+                this.filterChart('Fri', '4', this.startDate, this.endDate),
+                this.filterChart('Sat', '4', this.startDate, this.endDate)
             ],
             "fill":false,
             "borderColor":"rgb(75, 192, 192)",
@@ -256,13 +166,13 @@ export class ChartsComponent implements AfterViewInit, OnInit{
 
         let very_happy_daily_totals = {"label":"Very Happy",
             "data":[
-                this.numberByDay('Sun', this.filterMood('5', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Mon', this.filterMood('5', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Tue', this.filterMood('5', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Wed', this.filterMood('5', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Thu', this.filterMood('5', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Fri', this.filterMood('5', this.filterWeek(this.startDate, this.endDate))),
-                this.numberByDay('Sat', this.filterMood('5', this.filterWeek(this.startDate, this.endDate)))
+                this.filterChart('Sun', '5', this.startDate, this.endDate),
+                this.filterChart('Mon', '5', this.startDate, this.endDate),
+                this.filterChart('Tue', '5', this.startDate, this.endDate),
+                this.filterChart('Wed', '5', this.startDate, this.endDate),
+                this.filterChart('Thu', '5', this.startDate, this.endDate),
+                this.filterChart('Fri', '5', this.startDate, this.endDate),
+                this.filterChart('Sat', '5', this.startDate, this.endDate)
             ],
             "fill":false,
             "borderColor":"rgb(200, 200, 0)",

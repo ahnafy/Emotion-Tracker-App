@@ -8,16 +8,13 @@
 
     <mat-card-content>
 
-        before chart
         <canvas id="myChart" width="400" height="400"></canvas>
-        after chart
 
-        {{this.getdate()}}
-
-        testing
-
-        {{this.numberByDay('Fri', filterMood('4', filterWeek('', '')))}}
-
+        <p>
+            Total Entries: {{this.filterChart('', '', '', '')}}
+        <br />
+            Current Date: {{this.getdate()}}
+        </p>
 
     </mat-card-content>
         </mat-card>
