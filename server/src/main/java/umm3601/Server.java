@@ -28,7 +28,7 @@ public class Server {
         MongoClient mongoClient = new MongoClient();
         MongoDatabase emojiDatabase = mongoClient.getDatabase(databaseName);
         MongoDatabase journalDatabase = mongoClient.getDatabase(databaseName);
-        MongoDatabase resoucesDatabase = mongoClient.getDatabase(databaseName);
+        MongoDatabase resourcesDatabase = mongoClient.getDatabase(databaseName);
 
 
 
@@ -38,7 +38,7 @@ public class Server {
         GoalRequestHandler goalRequestHandler = new GoalRequestHandler(goalController);
         JournalController journalController = new JournalController(journalDatabase);
         JournalRequestHandler journalRequestHandler = new JournalRequestHandler(journalController);
-        ResourcesController resourcesController = new ResourcesController(resoucesDatabase);
+        ResourcesController resourcesController = new ResourcesController(resourcesDatabase);
         ResourcesRequestHandler resourcesRequestHandler = new ResourcesRequestHandler(resourcesController);
 
 
@@ -85,7 +85,7 @@ public class Server {
 
         get("api/emojis", emojiRequestHandler::getEmojis);
         get("api/emojis/:id", emojiRequestHandler::getEmojiJSON);
-       get("api/goals", goalRequestHandler::getGoals);
+        get("api/goals", goalRequestHandler::getGoals);
         get("api/goals/:id", goalRequestHandler::getGoalJSON);
         get("api/resources/:id", resourcesRequestHandler::getResourcesJSON);
         get("api/resources", resourcesRequestHandler::getResources);

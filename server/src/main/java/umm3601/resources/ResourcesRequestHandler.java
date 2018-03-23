@@ -46,7 +46,7 @@ public class ResourcesRequestHandler {
 
 
 
-    /**Method called from Server when the 'api/resourcess' endpoint is received.
+    /**Method called from Server when the 'api/resources' endpoint is received.
      * This handles the request received and the response
      * that will be sent back.
      *@param req the HTTP request
@@ -60,7 +60,7 @@ public class ResourcesRequestHandler {
     }
 
 
-    /**Method called from Server when the 'api/resourcess/new'endpoint is recieved.
+    /**Method called from Server when the 'api/resources/new'endpoint is recieved.
      * Gets specified resources info from request and calls addNewResources helper method
      * to append that info to a document
      *
@@ -78,7 +78,7 @@ public class ResourcesRequestHandler {
             {
                 try {
                     BasicDBObject dbO = (BasicDBObject) o;
-                    String id = dbO.getString("id");
+                    String id = dbO.getString("_id");
                     String name = dbO.getString("name");
                     String phonenumber = dbO.getString("phonenumber");
                     String email = dbO.getString("email");
