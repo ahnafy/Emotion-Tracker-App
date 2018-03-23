@@ -27,7 +27,7 @@ public class ResourcesControllerSpec {
     public void clearAndPopulateDB() throws IOException {
         MongoClient mongoClient = new MongoClient();
         MongoDatabase db = mongoClient.getDatabase("test");
-        MongoCollection<Document> resourceDocuments = db.getCollection("resource");
+        MongoCollection<Document> resourceDocuments = db.getCollection("resources");
         resourceDocuments.drop();
         List<Document> testResource = new ArrayList<>();
         testResource.add(Document.parse("{\n" +
@@ -82,7 +82,7 @@ public class ResourcesControllerSpec {
         return ((BsonString) doc.get("name")).getValue();
     }
 
-   /* @Test
+    @Test
     public void getAllResources() {
         Map<String, String[]> emptyMap = new HashMap<>();
         String jsonResult = resourceController.getResources(emptyMap);
@@ -96,19 +96,19 @@ public class ResourcesControllerSpec {
             .collect(Collectors.toList());
         List<String> expectedNames = Arrays.asList("Flora Hull", "Robert Ward", "Thomas Franco", "Wood Aguirre");
         assertEquals("Names should match", expectedNames, names);
-    }*/
+    }
 
-  /*  @Test
+    @Test
     public void getResourceById() {
         String jsonResult = resourceController.getResources(floraId.toHexString());
         System.out.println(jsonResult);
         Document flora = Document.parse(jsonResult);
 
-        assertEquals("Name should match", "FLora Hull", flora.getString("name"));
+        assertEquals("Name should match", "Flora Hull", flora.getString("name"));
         String noJsonResult = resourceController.getResources(new ObjectId().toString());
         assertNull("No name should match",noJsonResult);
 
-    }*/
+    }
 
     @Test
     public void addResourceTest(){
@@ -128,8 +128,9 @@ public class ResourcesControllerSpec {
         /*assertEquals("Should return the owner of the new resource", "Flora Hull2", name.get(1));
     */}
 
-    //@Test
-    /*public void getResourcesByName(){
+   /* Future iteration test for filtering resources by name if so desired.
+     //@Test
+    public void getResourcesByName(){
         Map<String, String[]> argMap = new HashMap<>();
         //This will search for resources owned by Kyle
         argMap.put("name", new String[] { "Hayden Cain" });
@@ -144,8 +145,7 @@ public class ResourcesControllerSpec {
         List<String> expectedName = Arrays.asList("Hayden Cain");
         assertEquals("Names should match", expectedName, name);
 
-    }
-*/
+    }*/
 
 
 }
