@@ -1,7 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Emoji} from "../emoji";
 import {ReportsService} from "../reports/reports.service";
+//import {Chart} from 'chart.js';
+import * as Chart from 'chart.js';
+
+
 
 @Component({
     selector: 'charts-component',
@@ -9,7 +13,7 @@ import {ReportsService} from "../reports/reports.service";
     styleUrls: ['./charts.component.css'],
 })
 
-export class ChartsComponent implements OnInit {
+export class ChartsComponent implements AfterViewInit {
     // These are public so that tests can reference them (.spec.ts)
     public emojis: Emoji[];
     public filteredEmojis: Emoji[];
@@ -17,6 +21,11 @@ export class ChartsComponent implements OnInit {
     startDate;
     endDate;
     getDate;
+    myChart: any;
+    ctx: any;
+
+    public week_chart: any;
+
 
 
     // These are the target values used in searching.
@@ -151,7 +160,41 @@ export class ChartsComponent implements OnInit {
     public static returnfive(): number {
         return 5;
     }
+/*
+    public getchart() {
+        this.week_chart = document.getElementById('week-chart');
+        var days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
+// var happy_daily_totals = [4, 3, 6, 1, 2, 3];
+// var bob=returnfive();
+//  happy_daily_totals=unshift(bob,happy_daily_totals);
+// console.log(happy_daily_totals);
 
+
+        var happy_daily_totals = [5, 4, 3, 6, 1, 2, 3];
+        var sad_daily_totals = [6, 7, 3, 1, 5, 4, 3];
+
+        var happy_data = {
+            x: days,
+            y: happy_daily_totals,
+            type: 'scatter',
+            name: 'Happy'
+        };
+
+        var sad_data = {
+            x: days,
+            y: sad_daily_totals,
+            type: 'scatter',
+            name: 'Sad'
+        };
+
+        var layout = {
+            title: 'This Week\'s Emotions'
+        };
+
+        var full_data = [happy_data, sad_data];
+
+         Plotly.plot(this.week_chart, full_data, layout);
+    }*/
     /**
      * Starts an asynchronous operation to update the emojis list
      *
@@ -178,8 +221,46 @@ export class ChartsComponent implements OnInit {
 
 
 
-    ngOnInit(): void {
-        this.refreshEmojis();
+    ngAfterViewInit(): void {
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
     }
 
 }
+
+

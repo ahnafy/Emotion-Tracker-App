@@ -1,16 +1,15 @@
-<script src="plotly-latest.min.js"></script>
-<script src="charts.component.ts"></script>
+
 <div layout-gt-sm="row">
     <div flex-gt-sm="80" flex-offset-gt-sm="10">
         <mat-card>
-    <mat-card-title id="reports-title">Reports</mat-card-title>
+    <mat-card-title id="charts-title">Charts</mat-card-title>
     <mat-divider></mat-divider>
 
 
     <mat-card-content>
 
         before chart
-        <div id="week-chart" style="width:600px;height:250px;"></div>
+        <div><canvas id="myChart" width="400" height="400"></canvas></div>
         after chart
 
         {{this.getdate()}}
@@ -33,35 +32,5 @@
 
 
 <script>
-    week_chart = document.getElementById('week-chart');
-    var days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
-   // var happy_daily_totals = [4, 3, 6, 1, 2, 3];
-   // var bob=returnfive();
-  //  happy_daily_totals=unshift(bob,happy_daily_totals);
-   // console.log(happy_daily_totals);
 
-    var happy_daily_totals = [5, 4, 3, 6, 1, 2, 3];
-    var sad_daily_totals = [6, 7, 3, 1, 5, 4, 3];
-
-    var happy_data = {
-        x: days,
-        y: happy_daily_totals,
-        type: 'scatter',
-        name: 'Happy'
-    };
-
-    var sad_data = {
-        x: days,
-        y: sad_daily_totals,
-        type: 'scatter',
-        name: 'Sad'
-    };
-
-    var layout = {
-        title: 'This Week\'s Emotions'
-    };
-
-    var full_data = [happy_data, sad_data];
-
-    Plotly.plot( week_chart, full_data, layout);
 </script>

@@ -54,7 +54,7 @@ import {ChartsComponent} from "./charts/charts.component";
         JournalListComponent,
         AddJournalComponent,
         EditJournalComponent,
-        ChartsComponent
+        ChartsComponent,
     ],
     providers: [
         UserListService,
@@ -72,7 +72,8 @@ import {ChartsComponent} from "./charts/charts.component";
         CrisisButtonComponent,
         AddGoalComponent,
         AddJournalComponent,
-        EditJournalComponent
+        EditJournalComponent,
+        ChartsComponent
         //add resource component would go here//
     ],
     bootstrap: [AppComponent]
