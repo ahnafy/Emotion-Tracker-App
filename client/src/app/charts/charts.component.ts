@@ -16,6 +16,8 @@ export class ChartsComponent implements AfterViewInit, OnInit{
     // These are public so that tests can reference them (.spec.ts)
     public emojis: Emoji[];
     public filteredEmojis: Emoji[];
+    public prefilteredEmojis: Emoji[];
+    public chartEmojis: Emoji[];
 
     startDate;
     endDate;
@@ -34,7 +36,7 @@ export class ChartsComponent implements AfterViewInit, OnInit{
 
     }
 
-    public filterEmojis(searchOwner): Emoji[] {
+    public filterEmojis(searchOwner,start, end): number {
 
         this.filteredEmojis = this.emojis;
 
@@ -47,26 +49,8 @@ export class ChartsComponent implements AfterViewInit, OnInit{
             });
         }
 
-        return this.filteredEmojis;
-    }
-
-    //get current date... good for debug
-
-    getdate(): string{
-        return Date();
-    }
-
-    filterChart(weekday, mood, startdate, enddate): number {
-        this.filteredEmojis = this.emojis;
-
-        //for testing purposes, manually setting start and end date
-        // this.startDate = new Date("Sun Mar 18 2018 10:00:00 GMT-0500 (CDT)");
-        // this.startDate = new Date("Fri Sep 24 1971 06:39:55 GMT+0000 (UTC)");
-        // this.endDate = new Date("Sat Mar 24 2018 20:00:00 GMT-0500 (CDT)");
-        // this.endDate = new Date("Sat Mar 24 2018 20:00:00 GMT-0500 (CDT)");
-
         // Filter by startDate
-        if (startdate != null) {
+        if (start != null) {
 
             this.filteredEmojis = this.filteredEmojis.filter(emoji => {
                 this.getDate = new Date(emoji.date);
@@ -75,7 +59,7 @@ export class ChartsComponent implements AfterViewInit, OnInit{
         }
 
         // Filter by endDate
-        if (enddate != null) {
+        if (end != null) {
 
             this.filteredEmojis = this.filteredEmojis.filter(emoji => {
                 this.getDate = new Date(emoji.date);
@@ -83,18 +67,31 @@ export class ChartsComponent implements AfterViewInit, OnInit{
             });
         }
 
+        this.prefilteredEmojis = this.filteredEmojis
+        return this.filteredEmojis.length;
+    }
+
+    //get current date... good for debug
+    getdate(): string{
+        return Date();
+    }
+
+    filterChart(weekday, mood): number {
+        this.chartEmojis = this.prefilteredEmojis;
+
+
         // Filter by value
-        this.filteredEmojis = this.filteredEmojis.filter(emoji => {
+        this.chartEmojis = this.chartEmojis.filter(emoji => {
             return !mood.toString() || emoji.mood.toString().indexOf(mood.toString()) !== -1;//??????
         });
 
         // Filter by day of the week
-        this.filteredEmojis = this.filteredEmojis.filter(emoji => {
+        this.chartEmojis = this.chartEmojis.filter(emoji => {
             return !weekday || emoji.date.indexOf(weekday) !== -1;
         });
 
         // return number of emojis left after filter
-        return this.filteredEmojis.length;
+        return this.chartEmojis.length;
     }
 
     /**
@@ -111,13 +108,13 @@ export class ChartsComponent implements AfterViewInit, OnInit{
 
         let very_sad_daily_totals = {"label":"Very Sad",
             "data":[
-                this.filterChart('Sun', '1', this.startDate, this.endDate),
-                this.filterChart('Mon', '1', this.startDate, this.endDate),
-                this.filterChart('Tue', '1', this.startDate, this.endDate),
-                this.filterChart('Wed', '1', this.startDate, this.endDate),
-                this.filterChart('Thu', '1', this.startDate, this.endDate),
-                this.filterChart('Fri', '1', this.startDate, this.endDate),
-                this.filterChart('Sat', '1', this.startDate, this.endDate)
+                this.filterChart('Sun', '1'),
+                this.filterChart('Mon', '1'),
+                this.filterChart('Tue', '1'),
+                this.filterChart('Wed', '1'),
+                this.filterChart('Thu', '1'),
+                this.filterChart('Fri', '1'),
+                this.filterChart('Sat', '1')
             ],
             "fill":false,
             "borderColor":"rgb(150, 0, 100)",
@@ -125,13 +122,13 @@ export class ChartsComponent implements AfterViewInit, OnInit{
 
         let sad_daily_totals = {"label":"Sad",
             "data":[
-                this.filterChart('Sun', '2', this.startDate, this.endDate),
-                this.filterChart('Mon', '2', this.startDate, this.endDate),
-                this.filterChart('Tue', '2', this.startDate, this.endDate),
-                this.filterChart('Wed', '2', this.startDate, this.endDate),
-                this.filterChart('Thu', '2', this.startDate, this.endDate),
-                this.filterChart('Fri', '2', this.startDate, this.endDate),
-                this.filterChart('Sat', '2', this.startDate, this.endDate)
+                this.filterChart('Sun', '2'),
+                this.filterChart('Mon', '2'),
+                this.filterChart('Tue', '2'),
+                this.filterChart('Wed', '2'),
+                this.filterChart('Thu', '2'),
+                this.filterChart('Fri', '2'),
+                this.filterChart('Sat', '2')
             ],
             "fill":false,
             "borderColor":"rgb(150, 75, 75)",
@@ -139,13 +136,13 @@ export class ChartsComponent implements AfterViewInit, OnInit{
 
         let neutral_daily_totals = {"label":"Neutral",
             "data":[
-                this.filterChart('Sun', '3', this.startDate, this.endDate),
-                this.filterChart('Mon', '3', this.startDate, this.endDate),
-                this.filterChart('Tue', '3', this.startDate, this.endDate),
-                this.filterChart('Wed', '3', this.startDate, this.endDate),
-                this.filterChart('Thu', '3', this.startDate, this.endDate),
-                this.filterChart('Fri', '3', this.startDate, this.endDate),
-                this.filterChart('Sat', '3', this.startDate, this.endDate)
+                this.filterChart('Sun', '3'),
+                this.filterChart('Mon', '3'),
+                this.filterChart('Tue', '3'),
+                this.filterChart('Wed', '3'),
+                this.filterChart('Thu', '3'),
+                this.filterChart('Fri', '3'),
+                this.filterChart('Sat', '3')
             ],
             "fill":false,
             "borderColor":"rgb(175, 175, 175)",
@@ -153,13 +150,13 @@ export class ChartsComponent implements AfterViewInit, OnInit{
 
         let happy_daily_totals = {"label":"Happy",
             "data":[
-                this.filterChart('Sun', '4', this.startDate, this.endDate),
-                this.filterChart('Mon', '4', this.startDate, this.endDate),
-                this.filterChart('Tue', '4', this.startDate, this.endDate),
-                this.filterChart('Wed', '4', this.startDate, this.endDate),
-                this.filterChart('Thu', '4', this.startDate, this.endDate),
-                this.filterChart('Fri', '4', this.startDate, this.endDate),
-                this.filterChart('Sat', '4', this.startDate, this.endDate)
+                this.filterChart('Sun', '4'),
+                this.filterChart('Mon', '4'),
+                this.filterChart('Tue', '4'),
+                this.filterChart('Wed', '4'),
+                this.filterChart('Thu', '4'),
+                this.filterChart('Fri', '4'),
+                this.filterChart('Sat', '4')
             ],
             "fill":false,
             "borderColor":"rgb(75, 192, 192)",
@@ -167,13 +164,13 @@ export class ChartsComponent implements AfterViewInit, OnInit{
 
         let very_happy_daily_totals = {"label":"Very Happy",
             "data":[
-                this.filterChart('Sun', '5', this.startDate, this.endDate),
-                this.filterChart('Mon', '5', this.startDate, this.endDate),
-                this.filterChart('Tue', '5', this.startDate, this.endDate),
-                this.filterChart('Wed', '5', this.startDate, this.endDate),
-                this.filterChart('Thu', '5', this.startDate, this.endDate),
-                this.filterChart('Fri', '5', this.startDate, this.endDate),
-                this.filterChart('Sat', '5', this.startDate, this.endDate)
+                this.filterChart('Sun', '5'),
+                this.filterChart('Mon', '5'),
+                this.filterChart('Tue', '5'),
+                this.filterChart('Wed', '5'),
+                this.filterChart('Thu', '5'),
+                this.filterChart('Fri', '5'),
+                this.filterChart('Sat', '5')
             ],
             "fill":false,
             "borderColor":"rgb(200, 200, 0)",
@@ -218,7 +215,7 @@ export class ChartsComponent implements AfterViewInit, OnInit{
         emojiListObservable.subscribe(
             emojis => {
                 this.emojis = emojis;
-                this.filterEmojis(this.emojiOwner);
+                this.filterEmojis(this.emojiOwner, this.startDate, this.endDate);
             },
             err => {
                 console.log(err);
