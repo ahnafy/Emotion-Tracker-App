@@ -1,0 +1,28 @@
+<mat-card>
+    <mat-card-content class="addedResources">
+        <mat-card-title>Your Contacts</mat-card-title>
+        <mat-divider></mat-divider>
+
+        <mat-accordion *ngIf="resources; else resourcesError" >
+            <mat-expansion-panel #elem class="resources" [id]="resources._id['$oid']"  *ngFor="let resources of this.filterResources(resourcesName)">
+                <mat-expansion-panel-header>
+                    <mat-panel-title id="test" matTooltip="ID: {{resources._id['$oid']}}" >{{resources.name}}</mat-panel-title>
+                </mat-expansion-panel-header>
+                <mat-panel-description >Name: {{resources.name}}</mat-panel-description>
+                <mat-panel-description >Email: {{resources.email}}</mat-panel-description>
+                <mat-panel-description >Phone Number: {{resources.phone}}</mat-panel-description>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+        <ng-template #resourcesError>
+            <mat-error>
+                There was a problem loading the data. Possibly the server is down or perhaps there are network
+                issues.
+            </mat-error>
+            <mat-error>
+                Please wait a bit and try again or start the server.
+            </mat-error>
+        </ng-template>
+
+    </mat-card-content>
+</mat-card>

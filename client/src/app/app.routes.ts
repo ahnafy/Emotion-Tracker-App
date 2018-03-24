@@ -6,7 +6,7 @@ import {ResourcesComponent} from "./resources/resources.component";
 import {ReportsComponent} from "./reports/reports.component";
 import {JournalingComponent} from "./journaling/journaling.component";
 import {GoalsComponent} from "./goals/goals.component";
-import {CrisisButtonComponent} from "./home/crisis-button.component";
+import {CrisisButtonComponent} from "./resources/crisis-button.component";
 import {JournalListComponent} from "./journals/journal-list.component";
 import {ChartsComponent} from "./charts/charts.component";
 
