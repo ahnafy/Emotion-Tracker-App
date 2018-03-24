@@ -10,7 +10,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
 import {Emoji} from "../emoji";
 
-describe('Reports list', () => {
+describe('Filtering for Charts', () => {
 
     let emojiList: ChartsComponent;
     let fixture: ComponentFixture<ChartsComponent>;
@@ -27,19 +27,19 @@ describe('Reports list', () => {
                     _id: '468ey161t98rry51te56',
                     owner: 'Nick',
                     mood: 3,
-                    date: 'Fri Nov 17 2017 17:15:18 GMT+0000 (UTC)'
+                    date: 'Sat Mar 24 2018 15:44:27 GMT-0500 (CDT)'
                 },
                 {
                     _id: '6w1er8bni17w87w9ery8',
                     owner: 'Roch',
                     mood: 4,
-                    date: 'Mon Jul 17 2017 21:54:32 GMT+0000 (UTC)'
+                    date: 'Fri Mar 23 2018 15:40:00 GMT-0500 (CDT)'
                 },
                 {
                     _id: '814aei77j8e698e4g89t',
                     owner: 'Leo',
                     mood: 5,
-                    date: 'Sat Apr 22 2017 10:15:08 GMT+0000 (UTC)'
+                    date: 'Wed Mar 21 2018 15:00:00 GMT-0500 (CDT)'
                 }
             ])
         };
@@ -94,7 +94,7 @@ describe('Reports list', () => {
     it('chart filters by start date', () => {
         console.log(emojiList.emojis)
         expect(emojiList.filteredEmojis.length).toBe(3);
-        emojiList.startDate = 'Mon Jul 17 2017 21:50:00 GMT+0000 (UTC)';
+        emojiList.startDate = new Date('Thu Mar 22 2018 15:45:00 GMT-0500 (CDT)');
         emojiList.refreshEmojis().subscribe(() => {
             expect(emojiList.filteredEmojis.length).toBe(2);
         });
@@ -103,7 +103,7 @@ describe('Reports list', () => {
     it('chart filters by end date', () => {
         console.log(emojiList.emojis)
         expect(emojiList.filteredEmojis.length).toBe(3);
-        emojiList.endDate = 'Mon Jul 17 2017 21:50:00 GMT+0000 (UTC)';
+        emojiList.endDate = new Date('Thu Mar 22 2018 15:45:00 GMT-0500 (CDT)');
         emojiList.refreshEmojis().subscribe(() => {
             expect(emojiList.filteredEmojis.length).toBe(1);
         });
@@ -111,15 +111,15 @@ describe('Reports list', () => {
 
     it('chart filters by day of week', () => {
         console.log(emojiList.emojis)
-        expect(emojiList.filteredEmojis.length).toBe(3);
+        expect(emojiList.chartEmojis.length).toBe(3);
         emojiList.refreshEmojis().subscribe(() => {
-            expect(emojiList.filterChart('Mon', '')).toBe(1);
+            expect(emojiList.filterChart('Sat', '')).toBe(1);
         });
     });
 
     it('chart filters by emotion', () => {
         console.log(emojiList.emojis)
-        expect(emojiList.filteredEmojis.length).toBe(3);
+        expect(emojiList.chartEmojis.length).toBe(3);
         emojiList.refreshEmojis().subscribe(() => {
             expect(emojiList.filterChart('', '4')).toBe(1);
         });
@@ -127,43 +127,6 @@ describe('Reports list', () => {
 
 });
 
-describe('Misbehaving Emoji List', () => {
-    let emojiList: ChartsComponent;
-    let fixture: ComponentFixture<ChartsComponent>;
-
-    let emojiListServiceStub: {
-        getEmojis: () => Observable<Emoji[]>
-    };
-
-    beforeEach(() => {
-        // stub UserService for test purposes
-        emojiListServiceStub = {
-            getEmojis: () => Observable.create(observer => {
-                observer.error('Error-prone observable');
-            })
-        };
-
-        TestBed.configureTestingModule({
-            imports: [FormsModule, CustomModule],
-            declarations: [ChartsComponent],
-            providers: [{provide: ReportsService, useValue: emojiListServiceStub},
-                {provide: MATERIAL_COMPATIBILITY_MODE, useValue: true}]
-        });
-    });
-
-    beforeEach(async(() => {
-        TestBed.compileComponents().then(() => {
-            fixture = TestBed.createComponent(ChartsComponent);
-            emojiList = fixture.componentInstance;
-            fixture.detectChanges();
-        });
-    }));
-
-    it('generates an error if we don\'t set up a ReportsService', () => {
-        // Since the observer throws an error, we don't expect users to be defined.
-        expect(emojiList.emojis).toBeUndefined();
-    });
-});
 
 
 

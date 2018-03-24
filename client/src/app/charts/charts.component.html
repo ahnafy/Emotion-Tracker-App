@@ -5,8 +5,9 @@
         <mat-card>
     <mat-card-title id="charts-title">Charts</mat-card-title>
     <mat-divider></mat-divider>
-            {{filterEmojis(emojiOwner, startDate, endDate)}}
+            {{filterEmojis(emojiOwner, startDate, endDate).length}}
             <p>
+
                 <mat-form-field>
                     <input matInput [(ngModel)]="startDate" (oninput)="buildChart()"
                            [matDatepicker]="startdp" placeholder="Start Date" disabled>
@@ -30,8 +31,10 @@
         <canvas id="myChart" width="400" height="400"></canvas>
 
         <p>
-            Total Entries: {{this.filterChart('', '')}}
-        <br />
+            Filtered Entries: {{this.filterChart('', '')}}
+            <br />
+            Total Entries: {{this.emojis.length}}
+            <br />
             Current Date: {{this.getdate()}}
         </p>
 
