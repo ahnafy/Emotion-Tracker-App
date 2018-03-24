@@ -19,9 +19,9 @@ export class ChartsComponent implements AfterViewInit, OnInit{
     public prefilteredEmojis: Emoji[];
     public chartEmojis: Emoji[];
 
-    startDate;
-    endDate;
-    getDate;
+    startDate: any;
+    endDate: any;
+    getDate: any;
     canvas: any;
     ctx: any;
 
@@ -36,7 +36,7 @@ export class ChartsComponent implements AfterViewInit, OnInit{
 
     }
 
-    public filterEmojis(searchOwner,start, end): number {
+    public filterEmojis(searchOwner, start, end): Emoji[] {
 
         this.filteredEmojis = this.emojis;
 
@@ -54,7 +54,7 @@ export class ChartsComponent implements AfterViewInit, OnInit{
 
             this.filteredEmojis = this.filteredEmojis.filter(emoji => {
                 this.getDate = new Date(emoji.date);
-                return this.getDate >= this.startDate;
+                return this.getDate >= start;
             });
         }
 
@@ -63,12 +63,12 @@ export class ChartsComponent implements AfterViewInit, OnInit{
 
             this.filteredEmojis = this.filteredEmojis.filter(emoji => {
                 this.getDate = new Date(emoji.date);
-                return this.getDate <= this.endDate;
+                return this.getDate <= end;
             });
         }
 
         this.prefilteredEmojis = this.filteredEmojis
-        return this.filteredEmojis.length;
+        return this.filteredEmojis;
     }
 
     //get current date... good for debug

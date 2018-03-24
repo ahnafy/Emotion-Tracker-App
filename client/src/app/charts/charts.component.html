@@ -7,6 +7,7 @@
     <mat-divider></mat-divider>
 
             <p>
+
                 <mat-form-field>
                     <input matInput [(ngModel)]="startDate" (oninput)="buildChart()"
                            [matDatepicker]="startdp" placeholder="Start Date" disabled>
@@ -23,14 +24,6 @@
                     <input matInput id="emojiOwner" #input placeholder="Filter by owner" [(ngModel)]="emojiOwner">
                 </mat-form-field>
                 <button mat-raised-button id="submit" (click)="buildChart()" type="button">Submit</button>
-            </p>
-
-            <p>
-                Owner: {{emojiOwner}}
-                <br />
-                Start: {{startDate}}
-                <br />
-                End: {{endDate}}
             </p>
 
             <mat-card-content>
