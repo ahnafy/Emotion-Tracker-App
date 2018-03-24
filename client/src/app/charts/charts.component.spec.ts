@@ -111,6 +111,7 @@ describe('Filtering for Charts', () => {
 
     it('chart filters by day of week', () => {
         console.log(emojiList.emojis)
+        emojiList.chartEmojis = emojiList.emojis;
         expect(emojiList.chartEmojis.length).toBe(3);
         emojiList.refreshEmojis().subscribe(() => {
             expect(emojiList.filterChart('Sat', '')).toBe(1);
@@ -119,6 +120,7 @@ describe('Filtering for Charts', () => {
 
     it('chart filters by emotion', () => {
         console.log(emojiList.emojis)
+        emojiList.chartEmojis = emojiList.emojis;
         expect(emojiList.chartEmojis.length).toBe(3);
         emojiList.refreshEmojis().subscribe(() => {
             expect(emojiList.filterChart('', '4')).toBe(1);
