@@ -1,26 +1,24 @@
-import {Component} from '@angular/core';
-import {Observable} from "rxjs/Observable";
-import {resources} from "../../app/resources/resources";
-import {ResourcesService} from "../../app/resources/resources.service";
+import {Component, OnInit} from '@angular/core';
 import {MatDialogRef} from '@angular/material';
 import {MatDialog} from "@angular/material/dialog";
+import {ResourcesService} from "./resources.service";
+import {resources} from "./resources";
+import {Observable} from "rxjs/Observable";
 
 @Component({
     selector: 'app-crisis-button.component',
     templateUrl: 'crisis-button.component.html',
 })
-export class CrisisButtonComponent {
-    // These are public so that tests can reference them (.spec.ts)
+export class CrisisButtonComponent implements OnInit{
     public resources: resources[];
-    public filteredResources: resources[];
 
     // These are the target values used in searching.
     // We should rename them to make that clearer.
     public resourcesName: string;
+    public filteredResources: resources[];
 
     constructor(
-        public dialogRef: MatDialogRef<CrisisButtonComponent>, public resourcesService: ResourcesService, public dialog: MatDialog)
-    {
+        public dialogRef: MatDialogRef<CrisisButtonComponent>, public resourcesService: ResourcesService, public dialog: MatDialog) {
     }
 
     public filterResources(searchName): resources[] {
@@ -57,7 +55,7 @@ export class CrisisButtonComponent {
         return resourcesListObservable;
     }
 
-    onNoClick(): void {
-        this.dialogRef.close();
+    ngOnInit(): void {
+        this.refreshResources();
     }
 }

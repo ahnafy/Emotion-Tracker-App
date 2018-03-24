@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {CrisisButtonComponent} from "./home/crisis-button.component";
+import {CrisisButtonComponent} from "./resources/crisis-button.component";
 import {MatDialog} from '@angular/material';
 
 @Component({
