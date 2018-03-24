@@ -29,12 +29,13 @@ public class Server {
         MongoDatabase emojiDatabase = mongoClient.getDatabase(databaseName);
         MongoDatabase journalDatabase = mongoClient.getDatabase(databaseName);
         MongoDatabase resourcesDatabase = mongoClient.getDatabase(databaseName);
+        MongoDatabase goalsDatabase = mongoClient.getDatabase(databaseName);
 
 
 
         EmojiController emojiController = new EmojiController(emojiDatabase);
         EmojiRequestHandler emojiRequestHandler = new EmojiRequestHandler(emojiController);
-        GoalController goalController = new GoalController(emojiDatabase);
+        GoalController goalController = new GoalController(goalsDatabase);
         GoalRequestHandler goalRequestHandler = new GoalRequestHandler(goalController);
         JournalController journalController = new JournalController(journalDatabase);
         JournalRequestHandler journalRequestHandler = new JournalRequestHandler(journalController);
@@ -85,12 +86,12 @@ public class Server {
 
         get("api/emojis", emojiRequestHandler::getEmojis);
         get("api/emojis/:id", emojiRequestHandler::getEmojiJSON);
-        get("api/goal", goalRequestHandler::getGoals);
-        get("api/goal/:id", goalRequestHandler::getGoalJSON);
+        get("api/goals", goalRequestHandler::getGoals);
+        get("api/goals/:id", goalRequestHandler::getGoalJSON);
         get("api/resources/:id", resourcesRequestHandler::getResourcesJSON);
         get("api/resources", resourcesRequestHandler::getResources);
         post("api/emojis/new", emojiRequestHandler::addNewEmoji);
-        post("api/goal/new", goalRequestHandler::addNewGoal);
+        post("api/goals/new", goalRequestHandler::addNewGoal);
         post("api/resources/new", resourcesRequestHandler::addNewResources);
 
 
