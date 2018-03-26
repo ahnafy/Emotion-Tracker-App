@@ -78,11 +78,13 @@ export class ChartsComponent implements AfterViewInit, OnInit{
 
     filterChart(weekday, mood): number {
         this.chartEmojis = this.prefilteredEmojis;
-
+        if(this.chartEmojis == null){
+            this.chartEmojis = [];
+        }
 
         // Filter by value
         this.chartEmojis = this.chartEmojis.filter(emoji => {
-            return !mood.toString() || emoji.mood.toString().indexOf(mood.toString()) !== -1;//??????
+            return !mood.toString() || emoji.mood.toString().indexOf(mood.toString()) !== -1;
         });
 
         // Filter by day of the week
@@ -200,7 +202,6 @@ export class ChartsComponent implements AfterViewInit, OnInit{
 
 
     ngAfterViewInit(): void {
-
         this.buildChart();
     }
 
