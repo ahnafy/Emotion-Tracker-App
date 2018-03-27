@@ -13,8 +13,8 @@
             <button mat-raised-button color="warn" id="crisisButton" (click)="openDialog()">Crisis</button>
         </div>
 
-        <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm><mat-icon>menu</mat-icon></button>
-        <button mat-raised-button color="warn" (click)="openDialog()" [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>Crisis</button>
+        <button mat-button id="menu" [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm><mat-icon>menu</mat-icon></button>
+        <button mat-raised-button color="warn" (click)="openDialog()" fxHide="false" fxHide.gt-sm>Crisis</button>
     </mat-toolbar>
 
     <mat-menu x-position="before" #menu="matMenu">

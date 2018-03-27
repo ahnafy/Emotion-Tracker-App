@@ -1,6 +1,6 @@
 body{
     font-size:150%;
-    background-image: url("http://www.lovethisgif.com/uploaded_images/118688-Pics-Photos-Heathers-Animated-Gif-Animations-Web-Backgrounds.gif");
+    background: orange;
     font-family: inherit;
 }
 
@@ -8,4 +8,8 @@ body{
     /*!*This fills the remaining space, by using flexbox.
    Every toolbar row uses a flexbox row layout. *!*/
     flex: 1 1 ;
+}
+
+#headerInfo{
+    color: deepskyblue;
 }
