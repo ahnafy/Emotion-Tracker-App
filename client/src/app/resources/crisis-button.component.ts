@@ -36,6 +36,10 @@ export class CrisisButtonComponent implements OnInit{
         return this.filteredResources;
     }
 
+    onNoClick(): void {
+        this.dialogRef.close();
+    }
+
     refreshResources(): Observable<resources[]> {
         // Get Resources returns an Observable, basically a "promise" that
         // we will get the data from the server.
