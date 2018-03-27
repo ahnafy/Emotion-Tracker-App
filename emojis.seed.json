@@ -73,27 +73,27 @@
     },
     {
         "_id": "5a98ab37aaa89d63b84f22f3",
-        "mood": 5,
-        "date": "Wed Jan 15 2003 18:55:24 GMT+0000 (UTC)",
-        "owner": "Kitty"
+        "mood": 3,
+        "date": "Tue Mar 20 2018 15:00:00 GMT-0500 (CDT)",
+        "owner": "Dustin"
     },
     {
         "_id": "5a98ab370c0c989af8c656fb",
-        "mood": 2,
-        "date": "Sun Aug 27 2000 21:37:16 GMT+0000 (UTC)",
-        "owner": "Wilma"
+        "mood": 3,
+        "date": "Mon Mar 19 2018 15:00:00 GMT-0500 (CDT)",
+        "owner": "Dustin"
     },
     {
         "_id": "5a98ab37ea7520af5b54149b",
-        "mood": 4,
-        "date": "Wed Apr 02 2003 09:16:39 GMT+0000 (UTC)",
-        "owner": "Kathie"
+        "mood": 3,
+        "date": "Fri Mar 23 2018 15:00:00 GMT-0500 (CDT)",
+        "owner": "Dustin"
     },
     {
         "_id": "5a98ab370ae02bfb2c8128c4",
         "mood": 3,
-        "date": "Tue Oct 27 2015 08:28:13 GMT+0000 (UTC)",
-        "owner": "Alberta"
+        "date": "Sat Mar 24 2018 15:00:00 GMT-0500 (CDT)",
+        "owner": "Dustin"
     },
     {
         "_id": "5a98ab379a3b62f5aecbcda5",

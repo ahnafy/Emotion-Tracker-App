@@ -43,7 +43,7 @@ task runE2ETest(type:Exec){
 task runClientTests(type: Exec, dependsOn: yarn_run_test) {
     group = 'application'
     executable "ng"
-    args = []
+    args = ["-sm=false"]
 }
 
 task build(type:NodeTask) {
