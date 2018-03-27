@@ -1,4 +1,4 @@
-/*
+
 import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {ChartsComponent} from "./charts.component";
 import {Observable} from 'rxjs/Observable';
@@ -84,7 +84,7 @@ describe('Filtering for Charts', () => {
     });
 
     it('chart filters by name', () => {
-        console.log(emojiList.emojis)
+        console.log(emojiList.emojis);
         expect(emojiList.filteredEmojis.length).toBe(3);
         emojiList.emojiOwner = 'L';
         emojiList.refreshEmojis().subscribe(() => {
@@ -93,7 +93,7 @@ describe('Filtering for Charts', () => {
     });
 
     it('chart filters by start date', () => {
-        console.log(emojiList.emojis)
+        console.log(emojiList.emojis);
         expect(emojiList.filteredEmojis.length).toBe(3);
         emojiList.startDate = new Date('Thu Mar 22 2018 15:45:00 GMT-0500 (CDT)');
         emojiList.refreshEmojis().subscribe(() => {
@@ -102,7 +102,7 @@ describe('Filtering for Charts', () => {
     });
 
     it('chart filters by end date', () => {
-        console.log(emojiList.emojis)
+        console.log(emojiList.emojis);
         expect(emojiList.filteredEmojis.length).toBe(3);
         emojiList.endDate = new Date('Thu Mar 22 2018 15:45:00 GMT-0500 (CDT)');
         emojiList.refreshEmojis().subscribe(() => {
@@ -111,7 +111,7 @@ describe('Filtering for Charts', () => {
     });
 
     it('chart filters by day of week', () => {
-        console.log(emojiList.emojis)
+        console.log(emojiList.emojis);
         emojiList.chartEmojis = emojiList.emojis;
         expect(emojiList.chartEmojis.length).toBe(3);
         emojiList.refreshEmojis().subscribe(() => {
@@ -120,7 +120,7 @@ describe('Filtering for Charts', () => {
     });
 
     it('chart filters by emotion', () => {
-        console.log(emojiList.emojis)
+        console.log(emojiList.emojis);
         emojiList.chartEmojis = emojiList.emojis;
         expect(emojiList.chartEmojis.length).toBe(3);
         emojiList.refreshEmojis().subscribe(() => {
@@ -133,4 +133,4 @@ describe('Filtering for Charts', () => {
 
 
 
-*/
+
