@@ -2,98 +2,98 @@
     {
         "_id": "5a98ab3747faebe4490d5155",
         "mood": 2,
-        "date": "Tue Nov 07 1995 06:30:35 GMT+0000 (UTC)",
-        "owner": "Gross"
+        "date": "Mon Mar 19 2018 15:00:00 GMT-0500 (CDT)",
+        "owner": "Dustin"
     },
     {
         "_id": "5a98ab37df1d93f364a9e893",
         "mood": 2,
-        "date": "Thu May 29 2014 07:44:46 GMT+0000 (UTC)",
-        "owner": "Christie"
+        "date": "Mon Mar 19 2018 18:00:00 GMT-0500 (CDT)",
+        "owner": "Dustin"
     },
     {
         "_id": "5a98ab376d39422503725a06",
         "mood": 2,
-        "date": "Mon Nov 21 1983 15:57:18 GMT+0000 (UTC)",
-        "owner": "Tania"
+        "date": "Tue Mar 20 2018 15:38:49 GMT-0500 (CDT)",
+        "owner": "Dustin"
     },
     {
         "_id": "5a98ab3775eb55d52cd87398",
         "mood": 5,
-        "date": "Fri Aug 08 1997 01:46:48 GMT+0000 (UTC)",
-        "owner": "Elinor"
+        "date": "Fri Mar 23 2018 15:38:49 GMT-0500 (CDT)",
+        "owner": "Dustin"
     },
     {
         "_id": "5a98ab376551b24c43a903cb",
-        "mood": 3,
-        "date": "Tue Apr 02 2002 13:25:27 GMT+0000 (UTC)",
-        "owner": "Inez"
+        "mood": 5,
+        "date": "Sat Mar 24 2018 15:38:49 GMT-0500 (CDT)",
+        "owner": "Dustin"
     },
     {
         "_id": "5a98ab37c00223a9d183508a",
-        "mood": 4,
-        "date": "Fri May 26 1989 12:09:33 GMT+0000 (UTC)",
-        "owner": "Harvey"
+        "mood": 5,
+        "date": "Sat Mar 24 2018 18:00:00 GMT-0500 (CDT)",
+        "owner": "Dustin"
     },
     {
         "_id": "5a98ab3718a4a2c2ebf59a18",
-        "mood": 3,
-        "date": "Sat Apr 22 2017 10:15:08 GMT+0000 (UTC)",
-        "owner": "Emily"
+        "mood": 4,
+        "date": "Sun Mar 18 2018 15:38:49 GMT-0500 (CDT)",
+        "owner": "Dustin"
     },
     {
         "_id": "5a98ab37073a0e36d0b712c1",
-        "mood": 3,
-        "date": "Mon Jun 12 1989 08:35:52 GMT+0000 (UTC)",
-        "owner": "Janell"
+        "mood": 4,
+        "date": "Thu Mar 22 2018 15:38:49 GMT-0500 (CDT)",
+        "owner": "Dustin"
     },
     {
         "_id": "5a98ab372f626d2c526a4d7b",
-        "mood": 3,
-        "date": "Sat Dec 02 1989 03:56:34 GMT+0000 (UTC)",
-        "owner": "Wilkins"
+        "mood": 4,
+        "date": "Wed Mar 21 2018 15:38:49 GMT-0500 (CDT)",
+        "owner": "Dustin"
     },
     {
         "_id": "5a98ab37ba14a7dc1f9400fd",
-        "mood": 2,
-        "date": "Mon Dec 12 2005 07:46:44 GMT+0000 (UTC)",
-        "owner": "Yesenia"
+        "mood": 4,
+        "date": "Fri Mar 23 2018 15:38:49 GMT-0500 (CDT)",
+        "owner": "Dustin"
     },
     {
         "_id": "5a98ab376daa873c39298750",
-        "mood": 1,
-        "date": "Tue Apr 06 1993 19:09:53 GMT+0000 (UTC)",
-        "owner": "Zimmerman"
+        "mood": 2,
+        "date": "Wed Mar 21 2018 15:38:49 GMT-0500 (CDT)",
+        "owner": "Dustin"
     },
     {
         "_id": "5a98ab374e63cefba95ee9df",
         "mood": 1,
-        "date": "Mon Aug 10 2015 20:49:36 GMT+0000 (UTC)",
-        "owner": "Tasha"
+        "date": "Tue Mar 20 2018 15:38:49 GMT-0500 (CDT)",
+        "owner": "Dustin"
     },
     {
         "_id": "5a98ab37aaa89d63b84f22f3",
-        "mood": 5,
-        "date": "Wed Jan 15 2003 18:55:24 GMT+0000 (UTC)",
-        "owner": "Kitty"
+        "mood": 3,
+        "date": "Tue Mar 20 2018 15:00:00 GMT-0500 (CDT)",
+        "owner": "Dustin"
     },
     {
         "_id": "5a98ab370c0c989af8c656fb",
-        "mood": 2,
-        "date": "Sun Aug 27 2000 21:37:16 GMT+0000 (UTC)",
-        "owner": "Wilma"
+        "mood": 3,
+        "date": "Mon Mar 19 2018 15:00:00 GMT-0500 (CDT)",
+        "owner": "Dustin"
     },
     {
         "_id": "5a98ab37ea7520af5b54149b",
-        "mood": 4,
-        "date": "Wed Apr 02 2003 09:16:39 GMT+0000 (UTC)",
-        "owner": "Kathie"
+        "mood": 3,
+        "date": "Fri Mar 23 2018 15:00:00 GMT-0500 (CDT)",
+        "owner": "Dustin"
     },
     {
         "_id": "5a98ab370ae02bfb2c8128c4",
         "mood": 3,
-        "date": "Tue Oct 27 2015 08:28:13 GMT+0000 (UTC)",
-        "owner": "Alberta"
+        "date": "Sat Mar 24 2018 15:00:00 GMT-0500 (CDT)",
+        "owner": "Dustin"
     },
     {
         "_id": "5a98ab379a3b62f5aecbcda5",

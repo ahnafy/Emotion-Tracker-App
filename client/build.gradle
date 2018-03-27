@@ -42,6 +42,7 @@ task runE2ETest(type:Exec){
 
 task runClientTests(dependsOn: yarn_run_test) {
     group = 'application'
+
 }
 
 task build(type:NodeTask) {
