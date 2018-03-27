@@ -25,8 +25,10 @@
                             <mat-panel-title >{{journal.subject}}</mat-panel-title>
 
                         </mat-expansion-panel-header>
-                        <mat-panel-description>Body: {{journal.body}}</mat-panel-description>
+                        <mat-panel-description>{{journal.body}}</mat-panel-description>
+                        <br>
                         <mat-panel-description>Date: {{journal.date}}</mat-panel-description>
+                        <br>
                         <mat-panel-description><button mat-raised-button (click)="openDialogReview(journal._id['$oid'], journal.subject, journal.body, journal.date)">Edit Journal</button> </mat-panel-description>
                     </mat-expansion-panel>
                 </mat-accordion>

@@ -9,10 +9,10 @@
                 </mat-form-field>
 
                 <mat-accordion *ngIf="emojis; else emojiError" >
-                    <mat-expansion-panel #elem class="emoji" [id]="emoji._id['$oid']"  *ngFor="let emoji of this.filterEmojis(emojiOwner)">
+                    <mat-expansion-panel #elem class="emoji" [id]="emoji._id"  *ngFor="let emoji of this.filterEmojis(emojiOwner)">
                         <mat-expansion-panel-header>
                             <!-- This gets an emoji image based on the mood that the user input when creating the emoji object -->
-                            <mat-panel-title id="test" matTooltip="ID: {{emoji._id['$oid']}}" >{{emoji.owner}} &nbsp; <img src="assets/reportEmojis/{{emoji.mood}}.png"></mat-panel-title>
+                            <mat-panel-title id="test" matTooltip="ID: {{emoji._id}}" >{{emoji.owner}} &nbsp; <img src="assets/reportEmojis/{{emoji.mood}}.png"></mat-panel-title>
                         </mat-expansion-panel-header>
                         <mat-panel-description >Date: {{emoji.date}}</mat-panel-description>
                     </mat-expansion-panel>

@@ -25,7 +25,7 @@ export class CrisisButtonComponent implements OnInit{
 
         this.filteredResources = this.resources;
 
-        // Filter by name
+        // Filter by name (for future
         if (searchName != null) {
             searchName = searchName.toLocaleLowerCase();
 

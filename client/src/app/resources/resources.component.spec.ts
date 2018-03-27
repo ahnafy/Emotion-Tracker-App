@@ -192,12 +192,11 @@ describe('Adding a resource', () => {
         });
     }));
 
-    /**
+/**
      it('calls ResourcesService.addResource', () => {
         expect(calledResource).toBeNull();
         resourceList.openDialog();
         expect(calledResource).toEqual(newResource);
     });
-     **/
+**/
 });
-// Tests for resources home page will go over here//

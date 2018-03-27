@@ -211,11 +211,11 @@ describe('Adding a goal', () => {
         });
     }));
 
-    /**
+/**
      it('calls GoalsService.addGoal', () => {
         expect(calledGoal).toBeNull();
         goalList.openDialog();
         expect(calledGoal).toEqual(newGoal);
     });
-     **/
+**/
 });
