@@ -22,7 +22,7 @@ describe('Report list', () => {
     it('should type something in filter subject box and check that it returned correct element', () => {
         ReportPage.navigateTo();
         ReportPage.typeAOwner('G');
-        expect(page.getUniqueReport('5a98ab374e46b12e5ff8c60f')).toEqual('Gregory');
+        expect(page.getUniqueReport('5a98ab374e46b12e5ff8c60f')).toEqual('Gregory  ');
         //ReportPage.backspace();
         //ReportPage.typeASubject("t");
         //expect(page.getUniqueReport('58af3a600343927e48e87215')).toEqual('I listened to this great song today');
