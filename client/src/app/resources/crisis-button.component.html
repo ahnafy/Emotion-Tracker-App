@@ -4,7 +4,7 @@
         <mat-divider></mat-divider>
 
         <mat-accordion *ngIf="resources; else resourcesError" >
-            <mat-expansion-panel #elem class="resources" [id]="resources._id['$oid']"  *ngFor="let resources of this.filterResources(resourcesName)">
+            <mat-expansion-panel #elem class="resources" [id]="resources.email"  *ngFor="let resources of this.filterResources(resourcesName)">
                 <mat-expansion-panel-header>
                     <mat-panel-title id="test" matTooltip="ID: {{resources._id['$oid']}}" >{{resources.name}}</mat-panel-title>
                 </mat-expansion-panel-header>
