@@ -2,13 +2,9 @@
 import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {ChartsComponent} from "./charts.component";
 import {Observable} from 'rxjs/Observable';
-import {FormsModule} from '@angular/forms';
 import {CustomModule} from '../custom.module';
 import {MATERIAL_COMPATIBILITY_MODE} from '@angular/material';
-import {MatDialog} from '@angular/material';
 import {ReportsService} from "../reports/reports.service";
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/do';
 import {Emoji} from "../emoji";
 
 describe('Filtering for Charts', () => {
@@ -79,7 +75,7 @@ describe('Filtering for Charts', () => {
         expect(emojiList.emojis.some((emoji: Emoji) => emoji.owner === 'Santa')).toBe(false);
     });
 
-    it('has one emoji with the owner leo', () => {
+    it('has one emoji with the owner Leo', () => {
         expect(emojiList.emojis.filter((emoji: Emoji) => emoji.owner === 'Leo').length).toBe(1);
     });
 
