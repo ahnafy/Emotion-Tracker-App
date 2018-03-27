@@ -1,6 +1,8 @@
 import {ResourcesPage} from './resources.po';
+/*import {AppPage} from './app.po';*/
 import {browser, protractor, element, by} from 'protractor';
 import {Key} from 'selenium-webdriver';
+
 
 const origFn = browser.driver.controlFlow().execute;
 
@@ -18,12 +20,48 @@ browser.driver.controlFlow().execute = function () {
     return origFn.apply(browser.driver.controlFlow(), args);
 };
 
+
 describe('Resources Page', () => {
     let page: ResourcesPage;
 
     beforeEach(() => {
         page = new ResourcesPage();
     });
+
+    it('should get and highlight Resources title attribute ', () => {
+        ResourcesPage.navigateTo();
+        expect(page.getResourceTitle()).toEqual('Your Contacts');
+    });
+
+    it('Should have an Add your own contact button', () => {
+        ResourcesPage.navigateTo();
+        expect(page.buttonExists()).toBeTruthy();
+    });
+
+    it('Should actually add the user with the information we put in the fields', () => {
+        ResourcesPage.navigateTo();
+        page.clickAddContactButton();
+        element(by.id('nameField')).sendKeys('Kai Zang');
+        element(by.id('emailField')).sendKeys('kai@kai.com');
+        element(by.id('phonenumberField')).sendKeys('1234567890');
+        element(by.id('confirmAddresourcesButton')).click();
+        setTimeout(() => {
+             expect(page.getUniqueContact('kai@kai.com')).toEqual('Kai Zang');
+         }, 10000);
+     });
+
+    /*it('Should actually see the user we added in crisis button', () => {
+        ResourcesPage.navigateTo();
+        page.clickAddContactButton();
+        element(by.id('nameField')).sendKeys('Kai Zang');
+        element(by.id('emailField')).sendKeys('kai@kai.com');
+        element(by.id('phonenumberField')).sendKeys('1234567890');
+        element(by.id('confirmAddresourcesButton')).click();
+        page.clickCrisisButton();
+        setTimeout(() => {
+            expect(page.getUniqueContact('kai@kai.com')).toEqual('Kai Zang');
+        }, 10000);
+    });*/
 
 
     it('should click on the Suicide Prevention Lifeline element, and the correct phone number is on the page', () => {
