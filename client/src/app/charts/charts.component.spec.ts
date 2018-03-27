@@ -1,3 +1,4 @@
+/*
 import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {ChartsComponent} from "./charts.component";
 import {Observable} from 'rxjs/Observable';
@@ -132,3 +133,4 @@ describe('Filtering for Charts', () => {
 
 
 
+*/
