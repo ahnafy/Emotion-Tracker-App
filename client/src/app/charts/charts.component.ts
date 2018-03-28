@@ -19,8 +19,8 @@ export class ChartsComponent implements AfterViewInit, OnInit{
     public prefilteredEmojis: Emoji[];
     public chartEmojis: Emoji[];
 
-    startDate: any;
-    endDate: any;
+    public startDate: any;
+    public endDate: any;
     getDate: any;
     canvas: any;
     ctx: any;
