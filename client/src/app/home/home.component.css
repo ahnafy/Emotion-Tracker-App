@@ -23,5 +23,6 @@ mat-slider:hover {
     opacity: 1;
 }
 
-
-
+.credits {
+    font-size: xx-small;
+}
