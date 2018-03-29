@@ -1,3 +1,11 @@
+body {
+    background-image: url("http://www.hanedanrpg.com/photos/hanedanrpg/23/112682.jpg");
+}
+
+
+#myChart{
+    position: relative;
+}
 #chartdiv{
     margin:0 auto;
     max-width: 90vh;
