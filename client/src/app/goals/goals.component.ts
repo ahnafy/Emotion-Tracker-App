@@ -45,6 +45,15 @@ export class GoalsComponent implements OnInit{
         });
     }
 
+    statusRefactor(status: boolean): string {
+        if(status){
+            return "Complete"
+        }
+        else{
+            return "Incomplete"
+        }
+    }
+
 
     public filterGoals(searchOwner): Goal[] {
 
