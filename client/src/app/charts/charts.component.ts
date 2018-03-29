@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, OnChanges} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Emoji} from "../emoji";
 import {ReportsService} from "../reports/reports.service";
@@ -19,8 +19,8 @@ export class ChartsComponent implements AfterViewInit, OnInit{
     public prefilteredEmojis: Emoji[];
     public chartEmojis: Emoji[];
 
-    startDate: any;
-    endDate: any;
+    public startDate: any;
+    public endDate: any;
     getDate: any;
     canvas: any;
     ctx: any;
@@ -67,7 +67,7 @@ export class ChartsComponent implements AfterViewInit, OnInit{
             });
         }
 
-        this.prefilteredEmojis = this.filteredEmojis
+        this.prefilteredEmojis = this.filteredEmojis;
         return this.filteredEmojis;
     }
 

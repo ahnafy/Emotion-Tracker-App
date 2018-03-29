@@ -6,3 +6,8 @@ body {
 #myChart{
     position: relative;
 }
+#chartdiv{
+    margin:0 auto;
+    max-width: 90vh;
+}
+
