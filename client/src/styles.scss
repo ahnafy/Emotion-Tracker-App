@@ -21,9 +21,16 @@
 
 .mat-card{
     background-image: url("http://atgbcentral.com/data/out/52/4361260-sunshine-wallpaper.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .mat-card-content{
     color: black;
 }
 
+html *
+{
+    font-family: 'Prosto One', cursive;
+
+};
