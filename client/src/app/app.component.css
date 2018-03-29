@@ -1,15 +1,11 @@
 body{
     font-size:150%;
-    background: orange;
-    font-family: inherit;
+    background-image: url("http://www.hanedanrpg.com/photos/hanedanrpg/23/112682.jpg");
+    font-family: 'Prata', serif;
 }
 
 .fill-remaining-space {
     /*!*This fills the remaining space, by using flexbox.
    Every toolbar row uses a flexbox row layout. *!*/
     flex: 1 1 ;
-}
-
-#headerInfo{
-    color: deepskyblue;
 }
