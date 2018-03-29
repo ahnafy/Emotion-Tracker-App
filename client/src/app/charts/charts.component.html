@@ -6,8 +6,8 @@
     <mat-card-title id="charts-title">Charts</mat-card-title>
     <mat-divider></mat-divider>
 
+            <div layout="row" layout-align="center">
             <p>
-
                 <mat-form-field>
                     <input matInput [(ngModel)]="startDate" (oninput)="buildChart()"
                            [matDatepicker]="startdp" placeholder="Start Date" disabled>
@@ -25,18 +25,13 @@
                 </mat-form-field>
                 <button mat-raised-button id="submit" (click)="buildChart()" type="button">Submit</button>
             </p>
+            </div>
             <a name="{{filterEmojis(emojiOwner, startDate, endDate).length}}"></a>
             <mat-card-content>
 
-        <canvas id="myChart" width="400" height="400"></canvas>
-
-        <p>
-            Filtered Entries: {{filterEmojis(emojiOwner, startDate, endDate).length}}
-            <br />
-            Total Entries: {{this.emojis.length}}
-            <br />
-            Current Date: {{this.getdate()}}
-        </p>
+                <div id="chartdiv" layout="row" layout-align="center">
+        <canvas id="myChart" width="500" height="500"></canvas>
+                </div>
 
     </mat-card-content>
         </mat-card>
