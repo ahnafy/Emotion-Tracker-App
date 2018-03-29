@@ -135,7 +135,7 @@ export class ChartsComponent implements AfterViewInit, OnInit{
             ],
             hidden: true,
             "fill":false,
-            "borderColor":"rgb(150, 75, 75)",
+            "borderColor":"rgb(200, 80, 20)",
             "lineTension":0.1};
 
         let neutral_daily_totals = {"label":"Neutral",
