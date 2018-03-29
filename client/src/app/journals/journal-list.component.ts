@@ -96,7 +96,7 @@ export class JournalListComponent implements OnInit {
             searchBody = searchBody.toLocaleLowerCase();
 
             this.filteredJournals = this.filteredJournals.filter(journal => {
-                return !searchBody || journal.body.toLowerCase().indexOf(searchSubject) !== -1;
+                return !searchBody || journal.body.toLowerCase().indexOf(searchBody) !== -1;
             });
         }
 
